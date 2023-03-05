@@ -1,6 +1,6 @@
 <p align="center">
-<img src="./public/logo-wordmark--light.png#gh-light-mode-only">
-<img src="./public/logo-wordmark--dark.png#gh-dark-mode-only">
+<img src="./public/logo-wordmark--light.png#gh-light-mode-only" height="260">
+<img src="./public/logo-wordmark--dark.png#gh-dark-mode-only" height="260">
 </p>
 
 ---
