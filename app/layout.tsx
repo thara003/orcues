@@ -1,7 +1,7 @@
 import "../styles/globals.css";
+import { Metadata } from "next";
 import { Inter } from "next/font/google";
 import clsx from "clsx";
-import { Metadata } from "next";
 
 const inter = Inter({
   variable: "--font-inter",
