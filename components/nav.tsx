@@ -29,15 +29,17 @@ const Nav = () => {
               />
             </NextLink>
           </div>
-          <AnimatePresence>
-            <motion.a
-              {...FADE_IN_ANIMATION_SETTINGS}
-              href="#"
-              className="hover:bg-brand-600 rounded-[12px] bg-black px-6 py-3 text-sm font-semibold text-white shadow-lg transition"
-            >
-              Get Started
-            </motion.a>
-          </AnimatePresence>
+          <div className="hidden md:inline-block lg:justify-end">
+            <AnimatePresence>
+              <motion.a
+                {...FADE_IN_ANIMATION_SETTINGS}
+                href="#"
+                className="hover:bg-brand-600 rounded-[12px] bg-black px-6 py-3 text-sm font-semibold text-white shadow-lg transition"
+              >
+                Get Started
+              </motion.a>
+            </AnimatePresence>
+          </div>
         </nav>
       </div>
     </header>
