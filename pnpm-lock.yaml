@@ -9,6 +9,7 @@ specifiers:
   clsx: ^1.2.1
   eslint: 8.34.0
   eslint-config-next: 13.2.1
+  framer-motion: ^10.1.0
   next: 13.2.1
   postcss: ^8.4.21
   prettier: ^2.7.1
@@ -25,6 +26,7 @@ dependencies:
   clsx: 1.2.1
   eslint: 8.34.0
   eslint-config-next: 13.2.1_7kw3g6rralp5ps6mg3uyzz6azm
+  framer-motion: 10.1.0_biqbaboplfbrettd7655fr4n2y
   next: 13.2.1_6m24vuloj5ihw4zc5lbsktc4fu
   react: 18.2.0
   react-dom: 18.2.0_react@18.2.0
@@ -227,6 +229,19 @@ packages:
       '@babel/helper-string-parser': 7.19.4
       '@babel/helper-validator-identifier': 7.19.1
       to-fast-properties: 2.0.0
+
+  /@emotion/is-prop-valid/0.8.8:
+    resolution: {integrity: sha512-u5WtneEAr5IDG2Wv65yhunPSMLIpuKsbuOktRojfrEiEvRyC85LgPMZI63cr7NUqT8ZIGdSVg8ZKGxIug4lXcA==}
+    requiresBuild: true
+    dependencies:
+      '@emotion/memoize': 0.7.4
+    dev: false
+    optional: true
+
+  /@emotion/memoize/0.7.4:
+    resolution: {integrity: sha512-Ja/Vfqe3HpuzRsG1oBtWTHk2PGZ7GR+2Vz5iYGelAw8dx32K0y7PjVuxK6z1nMpZOqAFsRUPCkK1YjJ56qJlgw==}
+    dev: false
+    optional: true
 
   /@eslint/eslintrc/1.4.1:
     resolution: {integrity: sha512-XXrH9Uarn0stsyldqDYq8r++mROmWRI1xKMXa640Bb//SY1+ECYX6VzT6Lcx5frD0V30XieqJ0oX9I2Xj5aoMA==}
@@ -1442,6 +1457,19 @@ packages:
   /fraction.js/4.2.0:
     resolution: {integrity: sha512-MhLuK+2gUcnZe8ZHlaaINnQLl0xRIGRfcGk2yl8xoQAfHrSsL3rYu6FCmBdkdbhc9EPlwyGHewaRsvwRMJtAlA==}
     dev: true
+
+  /framer-motion/10.1.0_biqbaboplfbrettd7655fr4n2y:
+    resolution: {integrity: sha512-A+xTdsLam8AMiXBfE7/VCy55BwG8Wvedx5c9k/J+LNM8dGm+/wObw+td4RUrhY+hUsPmgadUFYW7zuSe7RyG8Q==}
+    peerDependencies:
+      react: ^18.0.0
+      react-dom: ^18.0.0
+    dependencies:
+      react: 18.2.0
+      react-dom: 18.2.0_react@18.2.0
+      tslib: 2.5.0
+    optionalDependencies:
+      '@emotion/is-prop-valid': 0.8.8
+    dev: false
 
   /fs.realpath/1.0.0:
     resolution: {integrity: sha512-OO0pH2lK6a0hZnAdau5ItzHPI6pUlvI7jMVnxUQRtw4owF2wk8lOSabtGDCTP4Ggrg2MbGnWO9X8K1t4+fGMDw==}

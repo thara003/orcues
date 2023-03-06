@@ -10,11 +10,11 @@ const inter = Inter({
 
 export const metadata: Metadata = {
   title: {
-    default: "Orcues",
+    default: "The Open Source Email Marketing Platform | Orcues",
     template: `%s | Orcues`,
   },
-  description: "Redefined news letter subscription flow",
-  keywords: ["Orcues", "News Letter", "Subscription", "Open Source"],
+  description: "The Open Source Email Marketing Tool for 21st Century.",
+  keywords: ["Orcues", "Open Source", "Email", "Marketing", "Platform"],
   robots: {
     index: true,
     follow: true,
@@ -26,10 +26,6 @@ export const metadata: Metadata = {
       "max-snippet": -1,
     },
   },
-  icons: {
-    icon: "favicon/favicon.ico",
-    shortcut: "favicon/favicon.ico",
-  },
 };
 
 export default function RootLayout({
@@ -39,7 +35,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className={clsx(inter.variable, "bg-white")}>
-      <body>{children}</body>
+      <body className="flex flex-col scroll-smooth antialiased">{children}</body>
     </html>
   );
 }
