@@ -10,6 +10,8 @@
     "format": "prettier --write \"**/*.{js,jsx,ts,tsx,md}\""
   },
   "dependencies": {
+    "@radix-ui/react-avatar": "^1.0.2",
+    "@radix-ui/react-dropdown-menu": "^2.0.4",
     "@types/node": "18.14.1",
     "@types/react": "18.0.28",
     "@types/react-dom": "18.0.11",
@@ -17,9 +19,11 @@
     "eslint": "8.34.0",
     "eslint-config-next": "13.2.1",
     "framer-motion": "^10.1.0",
+    "lucide-react": "^0.129.0",
     "next": "13.2.1",
     "react": "18.2.0",
     "react-dom": "18.2.0",
+    "tailwind-merge": "^1.11.0",
     "typescript": "4.9.5"
   },
   "devDependencies": {
