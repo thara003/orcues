@@ -19,7 +19,7 @@ export default function SignupForm() {
     <div>
       <div className="grid gap-2">
         <div className="grid gap-1">
-          <label htmlFor="email" className="text-sm font-medium text-gray-700">
+        <label htmlFor="email" className="text-sm font-medium text-gray-700">
             Email
           </label>
           <input
@@ -29,9 +29,8 @@ export default function SignupForm() {
             onChange={(e) => {
               setEmail(e.target.value);
             }}
-            className="focus:ring-brand-500 focus:border-brand-500 block w-full rounded-md border border-gray-300 px-3 py-2 placeholder-gray-400 shadow-sm focus:outline-none sm:text-sm"
-            placeholder="
-                    Enter your email"
+            className="focus:ring-violet-500 focus:border-2 focus:border-violet-500 block w-full rounded-md border border-gray-300 px-3 py-2 placeholder-gray-400 shadow-sm focus:outline-none sm:text-sm"
+            placeholder="Enter your email"
             required
           />
         </div>
@@ -49,7 +48,7 @@ export default function SignupForm() {
             onChange={(e) => {
               setPassword(e.target.value);
             }}
-            className="focus:ring-brand-500 focus:border-brand-500 block w-full rounded-md border border-gray-300 px-3 py-2 placeholder-gray-400 shadow-sm focus:outline-none sm:text-sm"
+            className="focus:ring-violet-500 focus:border-2 focus:border-violet-500 block w-full rounded-md border border-gray-300 px-3 py-2 placeholder-gray-400 shadow-sm focus:outline-none sm:text-sm"
             placeholder="Enter your password"
             required
           />
@@ -74,7 +73,7 @@ export default function SignupForm() {
           <button
             type="submit"
             onClick={handleSignUp}
-            className="bg-brand-600 hover:bg-brand-700 focus:ring-brand-500 inline-flex w-full justify-center rounded-md border border-transparent px-4 py-2 text-sm font-medium text-black shadow-sm focus:outline-none focus:ring-2 focus:ring-offset-2"
+            className="bg-gradient-to-r from-violet-500 to-fuchsia-500 transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-100 duration-300 w-full rounded-md px-4 py-2 mt-4 text-base text-center font-medium text-white shadow-md"
           >
             Sign Up
           </button>
