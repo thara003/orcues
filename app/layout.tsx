@@ -11,8 +11,8 @@ const inter = Inter({
 
 export const metadata: Metadata = {
   title: {
-    default: "The Open Source Email Marketing Platform | Orcues",
-    template: `%s | Orcues`,
+    default: "The Open Source Newsletter Subscription Platform | Orcues",
+    template: `%s · Orcues`,
   },
   description: "The Open Source Email Marketing Tool for 21st Century.",
   keywords: ["Orcues", "Open Source", "Email", "Marketing", "Platform"],
