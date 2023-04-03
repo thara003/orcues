@@ -1,12 +1,12 @@
 import AppNav from "@/components/app/nav-tabs";
 
-interface DashboardLayoutProps {
+interface ProjectLayoutProps {
   children: React.ReactNode;
 }
 
 export default async function DashboardLayout({
   children,
-}: DashboardLayoutProps) {
+}: ProjectLayoutProps) {
   return (
     <div className="flex min-h-screen flex-col">
       <AppNav />
