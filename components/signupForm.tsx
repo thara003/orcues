@@ -2,17 +2,26 @@
 
 import { useSupabase } from "../app/supabase-provider";
 import { useState } from "react";
+import { useRouter } from "next/navigation";
+
 
 export default function SignupForm() {
   const { supabase } = useSupabase();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const router = useRouter();
 
   const handleSignUp = async () => {
-    await supabase.auth.signUp({
+    const { error } = await supabase.auth.signUp({
       email: email,
       password: password,
     });
+
+    if (error) {
+      alert(error.message);
+    } else {
+      router.push("/dashboard");
+    }
   };
 
   return (
