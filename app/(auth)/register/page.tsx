@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import SignupForm from "@/components/signupForm";
+import SignupForm from "@/components/app/signup-form";
 import Link from "next/link"
 
 

@@ -1,7 +1,7 @@
 "use client";
 
 
-import { useSupabase } from "../app/supabase-provider";
+import { useSupabase } from "../../app/supabase-provider";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 
@@ -23,10 +23,6 @@ export default function LoginForm() {
       router.push("/dashboard");
     }
   };
-
-  //   const handleLogout = async () => {
-  //     await supabase.auth.signOut();
-  //   };
 
   return (
     <div className="grid gap-4">

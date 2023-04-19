@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import LoginForm from "@/components/loginForm";
+import LoginForm from "@/components/app/login-form";
 import Link from "next/link"
 
 
@@ -10,8 +10,9 @@ export const metadata: Metadata = {
 
 export default function Login() {
   return (
-      <div className="flex h-screen w-screen flex-col items-center justify-center overscroll-none">
-      <div className="mx-auto flex w-full flex-col justify-center space-y-6 sm:w-[350px]">
+      // <div className="flex h-screen w-screen flex-col items-center justify-center overscroll-none">
+      // <div className="mx-auto flex w-full flex-col justify-center space-y-6 sm:w-[350px]">
+      <div className="mx-auto flex w-1/2 flex-col justify-center space-y-6">
         <div className="flex flex-col space-y-2 text-center">
           <h1 className="text-3xl font-semibold tracking-tight">
             Welcome back
@@ -26,7 +27,6 @@ export default function Login() {
             Don&apos;t have an account? Sign Up
           </Link>
         </p>
-      </div>
-      </div>
+       </div>
   );
 }
