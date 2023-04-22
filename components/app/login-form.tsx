@@ -25,7 +25,7 @@ export default function LoginForm() {
   };
 
   return (
-    <div className="grid gap-4">
+    <div className="grid gap-5">
       <div className="grid gap-1">
         <label htmlFor="email" className="text-sm font-medium text-gray-700">
           Email
@@ -58,22 +58,7 @@ export default function LoginForm() {
           required
         />
       </div>
-      <div className="flex items-center justify-between">
-        <div className="flex items-center">
-          <input
-            id="remember_me"
-            name="remember_me"
-            type="checkbox"
-            className="text-brand-600 focus:ring-brand-500 h-4 w-4 rounded border-gray-300"
-          />
-          <label
-            htmlFor="remember_me"
-            className="ml-2 block text-sm text-gray-900"
-          >
-            Remember me
-          </label>
-        </div>
-        <div className="text-sm">
+        <div className="flex items-center justify-start text-sm">
           <a
             href="#"
             className="font-medium hover:underline hover:underline-offset-2"
@@ -81,12 +66,11 @@ export default function LoginForm() {
             Forgot your password?
           </a>
         </div>
-      </div>
       <div>
         <button
           type="submit"
           onClick={handleLogin}
-          className="mt-4 w-full rounded-md bg-gradient-to-r from-violet-500 to-fuchsia-500 px-4 py-2 text-center text-base font-medium text-white shadow-md transition delay-150 duration-300 ease-in-out hover:-translate-y-1 hover:scale-100"
+          className="w-full rounded-md bg-gradient-to-r from-violet-600 to-indigo-600 px-4 py-2 text-center text-base font-medium text-white shadow-md transition delay-150 duration-300 ease-in-out hover:-translate-y-1 hover:scale-100"
         >
           Sign in
         </button>
