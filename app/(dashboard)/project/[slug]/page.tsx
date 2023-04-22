@@ -27,7 +27,7 @@ export default async function PostPage({ params }: PostPageProps) {
         {/* @ts-expect-error Server Component */}
         <UsersTable />
       </Card>
-      <div className="flex min-h-screen flex-col items-center justify-center py-2">
+      <div className="mt-10 flex flex-col items-center justify-center py-2">
         <h1 className="text-xl font-bold text-black">Project Page</h1>
         <p>{post}</p>
       </div>

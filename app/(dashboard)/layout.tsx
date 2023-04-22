@@ -9,10 +9,10 @@ interface DashboardLayoutProps {
 export default async function DashboardLayout({
   children,
 }: DashboardLayoutProps) {
+
   return (
     <div className="flex min-h-screen flex-col">
       <Suspense fallback="...">
-        {/* @ts-expect-error Server Component */}
         <AppNav />
       </Suspense>
       <main>{children}</main>

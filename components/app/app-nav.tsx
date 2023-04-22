@@ -1,23 +1,27 @@
 "use client";
 
-import { Fragment } from "react";
+import { Fragment, useState } from "react";
 import { usePathname } from "next/navigation";
 import { Disclosure, Menu, Transition } from "@headlessui/react";
 import Image from "next/image";
 import Link from "next/link";
+import cx from "classnames";
 
 const navigation = [
   { name: "Dashboard", href: "/dashboard" },
   { name: "Analytics", href: "/analytics" },
-  { name: "Settings", href: "/settings" },
+  { name: "Preferences", href: "/preferences" },
 ];
 
-function classNames(...classes: string[]) {
-  return classes.filter(Boolean).join(" ");
-}
+const projectNav = (slug) => [
+  { name: "Overview", href: `/project/${slug}` },
+  { name: "Analytics", href: `/project/${slug}/analytics` },
+  { name: "Settings", href: `/project/${slug}/settings` },
+];
 
-export default function AppNav({ user }: { user: any }) {
+export default function AppNav() {
   const pathname = usePathname();
+  const slug = pathname.split("/");
 
   return (
     <Disclosure as="nav" className="bg-white shadow-sm">
@@ -26,10 +30,7 @@ export default function AppNav({ user }: { user: any }) {
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
             <div className="flex h-16 justify-between">
               <div className="flex">
-                <Link
-                  href="/dashboard"
-                  className="flex flex-shrink-0 items-center"
-                >
+                <Link href="/dashboard" className="flex shrink-0 items-center">
                   <svg
                     width="402"
                     height="402"
@@ -70,21 +71,41 @@ export default function AppNav({ user }: { user: any }) {
                 </Link>
 
                 <div className="hidden sm:-my-px sm:ml-6 sm:flex sm:space-x-8">
-                  {navigation.map((item) => (
-                    <Link
-                      key={item.name}
-                      href={item.href}
-                      className={classNames(
-                        pathname === item.href
-                          ? "border-slate-500 text-gray-900"
-                          : "border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700",
-                        "inline-flex items-center border-b-2 px-1 pt-1 text-sm font-medium",
-                      )}
-                      aria-current={pathname === item.href ? "page" : undefined}
-                    >
-                      {item.name}
-                    </Link>
-                  ))}
+                  {slug[1] === "project"
+                    ? projectNav(slug[2]).map((item) => (
+                        <Link
+                          key={item.name}
+                          href={item.href}
+                          className={cx(
+                            pathname === item.href
+                              ? "border-slate-500 text-gray-900"
+                              : "border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700",
+                            "inline-flex items-center border-b-2 px-1 pt-1 text-sm font-medium",
+                          )}
+                          aria-current={
+                            pathname === item.href ? "page" : undefined
+                          }
+                        >
+                          {item.name}
+                        </Link>
+                      ))
+                    : navigation.map((item) => (
+                        <Link
+                          key={item.name}
+                          href={item.href}
+                          className={cx(
+                            pathname === item.href
+                              ? "border-slate-500 text-gray-900"
+                              : "border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700",
+                            "inline-flex items-center border-b-2 px-1 pt-1 text-sm font-medium",
+                          )}
+                          aria-current={
+                            pathname === item.href ? "page" : undefined
+                          }
+                        >
+                          {item.name}
+                        </Link>
+                      ))}
                 </div>
               </div>
               <div className="hidden sm:ml-6 sm:flex sm:items-center">
@@ -111,33 +132,18 @@ export default function AppNav({ user }: { user: any }) {
                     leaveTo="transform opacity-0 scale-95"
                   >
                     <Menu.Items className="absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
-                      {user ? (
-                        <Menu.Item>
-                          {({ active }) => (
-                            <button
-                              className={classNames(
-                                active ? "bg-gray-100" : "",
-                                "flex w-full px-4 py-2 text-sm text-gray-700",
-                              )}
-                            >
-                              Sign out
-                            </button>
-                          )}
-                        </Menu.Item>
-                      ) : (
-                        <Menu.Item>
-                          {({ active }) => (
-                            <button
-                              className={classNames(
-                                active ? "bg-gray-100" : "",
-                                "flex w-full px-4 py-2 text-sm text-gray-700",
-                              )}
-                            >
-                              Sign in
-                            </button>
-                          )}
-                        </Menu.Item>
-                      )}
+                      <Menu.Item>
+                        {({ active }) => (
+                          <button
+                            className={cx(
+                              active ? "bg-gray-100" : "",
+                              "flex w-full px-4 py-2 text-sm text-gray-700",
+                            )}
+                          >
+                            Sign out
+                          </button>
+                        )}
+                      </Menu.Item>
                     </Menu.Items>
                   </Transition>
                 </Menu>
