@@ -10,7 +10,7 @@ export const metadata: Metadata = {
 
 export default function Login() {
   return (
-      <div className="flex w-2/3 flex-col justify-start space-y-6">
+      <div className="flex w-full md:w-2/3 flex-col justify-center xxl:justify-start space-y-6">
         <div className="flex flex-col space-y-2 text-start">
           <h1 className="text-4xl font-semibold tracking-tight">
             Welcome back
