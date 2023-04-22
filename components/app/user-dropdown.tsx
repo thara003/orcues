@@ -11,6 +11,8 @@ import {
 } from "lucide-react";
 
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { useSupabase } from "@/app/supabase-provider";
+import { useRouter } from "next/navigation";
 
 import {
   DropdownMenu,
@@ -24,6 +26,14 @@ import {
 } from "@/components/ui/dropdown";
 
 export function UserDropDown() {
+  const { supabase } = useSupabase();
+  const router = useRouter();
+
+  const handleLogout = async () => {
+    await supabase.auth.signOut();
+
+    router.push("/login");
+  };
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
@@ -69,7 +79,7 @@ export function UserDropDown() {
           <span>API</span>
         </DropdownMenuItem>
         <DropdownMenuSeparator />
-        <DropdownMenuItem>
+        <DropdownMenuItem onClick={handleLogout}>
           <LogOut className="mr-2 h-4 w-4" />
           <span>Log out</span>
           <DropdownMenuShortcut>⇧⌘Q</DropdownMenuShortcut>

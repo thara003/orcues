@@ -1,4 +1,4 @@
-import Nav from "@/components/nav";
+import Nav from "@/components/app/nav";
 interface MarketingLayoutProps {
   children: React.ReactNode;
 }
