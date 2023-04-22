@@ -4,7 +4,6 @@ import { useSupabase } from "../app/supabase-provider";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 
-
 export default function SignupForm() {
   const { supabase } = useSupabase();
   const [email, setEmail] = useState("");
@@ -28,7 +27,7 @@ export default function SignupForm() {
     <div>
       <div className="grid gap-2">
         <div className="grid gap-1">
-        <label htmlFor="email" className="text-sm font-medium text-gray-700">
+          <label htmlFor="email" className="text-sm font-medium text-gray-700">
             Email
           </label>
           <input
@@ -38,7 +37,7 @@ export default function SignupForm() {
             onChange={(e) => {
               setEmail(e.target.value);
             }}
-            className="focus:ring-violet-500 focus:border-2 focus:border-violet-500 block w-full rounded-md border border-gray-300 px-3 py-2 placeholder-gray-400 shadow-sm focus:outline-none sm:text-sm"
+            className="block w-full rounded-md border border-gray-300 px-3 py-2 placeholder-gray-400 shadow-sm focus:border-2 focus:border-violet-500 focus:outline-none focus:ring-violet-500 sm:text-sm"
             placeholder="Enter your email"
             required
           />
@@ -57,7 +56,7 @@ export default function SignupForm() {
             onChange={(e) => {
               setPassword(e.target.value);
             }}
-            className="focus:ring-violet-500 focus:border-2 focus:border-violet-500 block w-full rounded-md border border-gray-300 px-3 py-2 placeholder-gray-400 shadow-sm focus:outline-none sm:text-sm"
+            className="block w-full rounded-md border border-gray-300 px-3 py-2 placeholder-gray-400 shadow-sm focus:border-2 focus:border-violet-500 focus:outline-none focus:ring-violet-500 sm:text-sm"
             placeholder="Enter your password"
             required
           />
@@ -82,7 +81,7 @@ export default function SignupForm() {
           <button
             type="submit"
             onClick={handleSignUp}
-            className="bg-gradient-to-r from-violet-500 to-fuchsia-500 transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-100 duration-300 w-full rounded-md px-4 py-2 mt-4 text-base text-center font-medium text-white shadow-md"
+            className="mt-4 w-full rounded-md bg-gradient-to-r from-violet-500 to-fuchsia-500 px-4 py-2 text-center text-base font-medium text-white shadow-md transition delay-150 duration-300 ease-in-out hover:-translate-y-1 hover:scale-100"
           >
             Sign Up
           </button>

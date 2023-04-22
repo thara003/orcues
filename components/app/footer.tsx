@@ -6,7 +6,7 @@ export default function Footer() {
       <p className="flex h-10 items-center justify-center p-3 font-mono text-[13px] text-gray-800">
         Built with 💜 by
         <Link href="#" className="pl-2">
-            Team Orcues
+          Team Orcues
         </Link>
       </p>
     </footer>

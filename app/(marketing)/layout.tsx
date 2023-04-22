@@ -8,7 +8,7 @@ export default async function MarketingLayout({
 }: MarketingLayoutProps) {
   return (
     <div className="flex min-h-screen flex-col">
-        <Nav />
+      <Nav />
       <main>{children}</main>
     </div>
   );
