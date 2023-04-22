@@ -1,7 +1,8 @@
 import React from "react";
-import { Title, Card } from "@tremor/react";
 
-const SettingsPage = () => {
+import { Title } from "@tremor/react";
+
+const ProjectAnalytics = () => {
   return (
     <main className="mx-auto max-w-7xl p-4 md:p-10">
       <Title>Project Analytics</Title>
@@ -9,4 +10,4 @@ const SettingsPage = () => {
   );
 };
 
-export default SettingsPage;
+export default ProjectAnalytics;

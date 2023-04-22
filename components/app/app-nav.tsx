@@ -1,6 +1,6 @@
 "use client";
 
-import { Fragment, useState } from "react";
+import { Fragment } from "react";
 import { usePathname } from "next/navigation";
 import { Disclosure, Menu, Transition } from "@headlessui/react";
 import Image from "next/image";
@@ -9,7 +9,6 @@ import cx from "classnames";
 
 const navigation = [
   { name: "Dashboard", href: "/dashboard" },
-  { name: "Analytics", href: "/analytics" },
   { name: "Preferences", href: "/preferences" },
 ];
 
