@@ -2,7 +2,7 @@ import "../styles/globals.css";
 import { Metadata } from "next";
 import { Inter } from "next/font/google";
 import clsx from "clsx";
-import SupabaseProvider from './supabase-provider'
+import SupabaseProvider from "./supabase-provider";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -36,9 +36,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className={clsx(inter.variable, "bg-white")}>
-      <body className="flex flex-col scroll-smooth antialiased">
-      <SupabaseProvider>{children}</SupabaseProvider>
-       </body>
+      <body className="flex h-full flex-col scroll-smooth bg-gray-50 antialiased">
+        <SupabaseProvider>{children}</SupabaseProvider>
+      </body>
     </html>
   );
 }

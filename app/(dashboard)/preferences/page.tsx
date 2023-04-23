@@ -7,7 +7,7 @@ const SettingsPage = () => {
       {/* <h1 className="text-4xl font-bold text-black">
         Analytics is under construction.
       </h1> */}
-            <UserInfo />
+      <UserInfo />
     </div>
   );
 };

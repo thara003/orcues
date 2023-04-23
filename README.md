@@ -1,11 +1,14 @@
 <p align="center">
-<img src="./public/logo-wordmark--light.png#gh-light-mode-only" height="260">
-<img src="./public/logo-wordmark--dark.png#gh-dark-mode-only" height="260">
+<img src="./public/logo.png" height="150">
+<h1 align="center"><b>Orcues</b></h1>
+<p align="center">
+  Newsletter subscription management for Supabase users.
+    <br />
+    <a href="https://orcues.com"><strong>Check it out now 🍀</strong></a>
+  </p>
 </p>
 
----
-
-## Overview
+## Introduction
 
 Newsletter subscriptions are a crucial part of the marketing pipeline in every company, where a significant amount of time is being spent to convert all the leads into sales yet - they are tedious processes with complicated flow of setting up, providing less data transparency.
 
@@ -26,7 +29,7 @@ To learn more, visit our [orcues.com](https://orcues.com/).
 - Next.js
 - Tailwind CSS
 - Supabase
-- Cloudflare + Vercel
+- Vercel
 
 ## Documentation
 
