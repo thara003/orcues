@@ -1,35 +1,39 @@
 "use client";
 
-import { useSupabase } from "../app/supabase-provider";
+import { useSupabase } from "../../app/supabase-provider";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
+import { Toaster, toast } from "sonner";
+import { Loader2 } from "lucide-react";
 
 export default function LoginForm() {
   const { supabase } = useSupabase();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [loading, setLoading] = useState(false);
   const router = useRouter();
 
   const handleLogin = async () => {
+    setLoading(true);
     const { error } = await supabase.auth.signInWithPassword({
       email: email,
       password: password,
     });
 
     if (error) {
-      alert(error.message);
+      setLoading(false);
+      toast.error(error.message);
     } else {
+      setLoading(false);
+      toast.success("Logged in successfully!");
       router.push("/dashboard");
     }
   };
 
-  //   const handleLogout = async () => {
-  //     await supabase.auth.signOut();
-  //   };
-
   return (
-    <div className="grid gap-4">
+    <div className="grid gap-5">
       <div className="grid gap-1">
+        <Toaster position="top-right" />
         <label htmlFor="email" className="text-sm font-medium text-gray-700">
           Email
         </label>
@@ -61,36 +65,23 @@ export default function LoginForm() {
           required
         />
       </div>
-      <div className="flex items-center justify-between">
-        <div className="flex items-center">
-          <input
-            id="remember_me"
-            name="remember_me"
-            type="checkbox"
-            className="text-brand-600 focus:ring-brand-500 h-4 w-4 rounded border-gray-300"
-          />
-          <label
-            htmlFor="remember_me"
-            className="ml-2 block text-sm text-gray-900"
-          >
-            Remember me
-          </label>
-        </div>
-        <div className="text-sm">
-          <a
-            href="#"
-            className="font-medium hover:underline hover:underline-offset-2"
-          >
-            Forgot your password?
-          </a>
-        </div>
+      <div className="flex items-center justify-start text-sm">
+        <a
+          href="#"
+          className="font-medium hover:underline hover:underline-offset-2"
+        >
+          Forgot your password?
+        </a>
       </div>
       <div>
         <button
           type="submit"
           onClick={handleLogin}
-          className="mt-4 w-full rounded-md bg-gradient-to-r from-violet-500 to-fuchsia-500 px-4 py-2 text-center text-base font-medium text-white shadow-md transition delay-150 duration-300 ease-in-out hover:-translate-y-1 hover:scale-100"
+          className="flex w-full flex-row items-center justify-center rounded-md bg-gradient-to-r from-violet-600 to-indigo-600 px-4 py-2 text-center text-base font-medium text-white shadow-md transition delay-150 duration-300 ease-in-out hover:-translate-y-1 hover:scale-100"
         >
+          {loading && (
+            <Loader2 className="mr-2 flex h-4 w-4 animate-spin items-center justify-center" />
+          )}
           Sign in
         </button>
       </div>
