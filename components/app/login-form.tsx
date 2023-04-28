@@ -33,7 +33,7 @@ export default function LoginForm() {
   return (
     <div className="grid gap-5">
       <div className="grid gap-1">
-        <Toaster position="top-right" />
+        <Toaster position="bottom-right" />
         <label htmlFor="email" className="text-sm font-medium text-gray-700">
           Email
         </label>

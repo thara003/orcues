@@ -26,6 +26,7 @@
     "eslint": "8.34.0",
     "eslint-config-next": "13.2.1",
     "framer-motion": "^10.1.0",
+    "lottie-react": "^2.4.0",
     "lucide-react": "^0.129.0",
     "next": "13.2.1",
     "react": "18.2.0",
