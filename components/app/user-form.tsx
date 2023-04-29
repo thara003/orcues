@@ -62,6 +62,7 @@ export default function UserForm() {
       .update({
         full_name: newfullname,
         username: newusername,
+        email: user.email,
       })
       .eq("id", user.id);
 
