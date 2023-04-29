@@ -22,6 +22,7 @@ export default function UserForm() {
   const [newfullname, setNewFullname] = useState("");
   const [username, setUsername] = useState("");
   const [newusername, setNewUsername] = useState("");
+  const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(true);
   const { supabase } = useSupabase();
   const router = useRouter();
@@ -69,10 +70,19 @@ export default function UserForm() {
     setIsEdit(false);
     toast.success("Your profile has been updated");
   };
-  const cancelUpdateProfile = () => {
+
+  const updatePassword = async () => {
+    const { data, error } = await supabase.auth.updateUser({
+      password: password,
+    });
+    setIsEdit(false);
+    toast.success("Your password has been updated");
+  };
+  const cancelUpdate = () => {
     setIsEdit(false);
     setNewFullname(fullname);
     setNewUsername(username);
+    setPassword("");
   };
 
   const handleLogout = async () => {
@@ -155,7 +165,7 @@ export default function UserForm() {
                     variant="secondary"
                     disabled={!isEdit}
                     className="mt-4 w-24 rounded-md border-red-400 px-4 py-2 text-center text-red-400 hover:bg-red-100"
-                    onClick={cancelUpdateProfile}
+                    onClick={cancelUpdate}
                   >
                     Cancel
                   </Button>
@@ -174,89 +184,58 @@ export default function UserForm() {
             {tab === 1 && (
               <div>
                 <Title>Change password</Title>
-                <TextInput
-                  placeholder="Enter your old password"
-                  type="password"
-                />
-                <TextInput
-                  placeholder="Enter your new password"
-                  type="password"
-                />
+                <div className="my-4 flex flex-row items-center">
+                  <Subtitle className="w-1/3">New Password</Subtitle>
+                  <TextInput
+                    placeholder="Enter your new password"
+                    type="password"
+                    value={password}
+                    onChange={(e) => {
+                      setPassword(e.target.value);
+                      setIsEdit(true);
+                    }}
+                  />
+                </div>
+                <div className="flex flex-row items-center justify-end gap-2">
+                  <Button
+                    size="xs"
+                    variant="secondary"
+                    disabled={!isEdit}
+                    className="mt-4 w-24 rounded-md border-red-400 px-4 py-2 text-center text-red-400 hover:bg-red-100"
+                    onClick={cancelUpdate}
+                  >
+                    Cancel
+                  </Button>
+                  <Button
+                    size="xs"
+                    variant="secondary"
+                    disabled={!isEdit}
+                    className="mt-4 w-24 rounded-md border-indigo-400 px-4 py-2 text-center text-indigo-400 hover:bg-indigo-100"
+                    onClick={updatePassword}
+                  >
+                    Save
+                  </Button>
+                </div>
               </div>
             )}
             {tab === 2 && (
               <div>
                 <Title>Mail server config</Title>
-                <SelectBox
-                  onValueChange={(value) =>
-                    console.log("the new value is", value)
-                  }
-                  defaultValue="1"
-                >
-                  <SelectBoxItem value="1" text="Kilometers" />
-                  <SelectBoxItem value="2" text="Meters" />
-                  <SelectBoxItem value="3" text="Miles" />
-                  <SelectBoxItem value="4" text="Nautical Miles" />
-                </SelectBox>
+                <div className="my-4 flex flex-row items-center">
+                  <SelectBox
+                    onValueChange={(value) =>
+                      console.log("the new value is", value)
+                    }
+                    defaultValue="1"
+                  >
+                    <SelectBoxItem value="1" text="Kilometers" />
+                    <SelectBoxItem value="2" text="Meters" />
+                    <SelectBoxItem value="3" text="Miles" />
+                    <SelectBoxItem value="4" text="Nautical Miles" />
+                  </SelectBox>
+                </div>
               </div>
             )}
-            {/* <button
-              className="mt-4 w-24 rounded-md bg-black px-4 py-2 text-center text-white hover:bg-black/75"
-              onClick={() => {
-                setIsEdit(true);
-              }}
-            >
-              Edit
-            </button> */}
-            {/* <label
-              htmlFor="username"
-              className="text-sm font-medium text-gray-700"
-            >
-              Username
-            </label>
-            <input
-              type="text"
-              name="username"
-              id="username"
-              onChange={(e) => {
-                setUsername(e.target.value);
-              }}
-              className="block w-full rounded-md border border-gray-300 px-3 py-2 placeholder-gray-400 shadow-sm focus:border-2 focus:border-violet-500 focus:outline-none focus:ring-violet-500 sm:text-sm"
-              placeholder="Enter your username"
-              required
-            />
-            <label
-              htmlFor="fullname"
-              className="text-sm font-medium text-gray-700"
-            >
-              Fullname
-            </label>
-            <input
-              type="text"
-              name="fullname"
-              id="fullname"
-              onChange={(e) => {
-                setFullname(e.target.value);
-              }}
-              className="block w-full rounded-md border border-gray-300 px-3 py-2 placeholder-gray-400 shadow-sm focus:border-2 focus:border-violet-500 focus:outline-none focus:ring-violet-500 sm:text-sm"
-              placeholder="Enter your fullname"
-              required
-            /> */}
-
-            {/* <TextInput
-              placeholder="Enter your username"
-              disabled={!isEdit}
-              type="text"
-              defaultValue={username}
-              value={username}
-            /> */}
-
-            {/* <button
-              className="mt-4 w-24 rounded-md bg-black px-4 py-2 text-center text-white hover:bg-black/75"
-              onClick={updateProfile}
-            >
-              Save
-            </button> */}
           </main>
         </div>
       )}
