@@ -1,10 +1,11 @@
 "use client";
 
 import { Database } from "@/lib/database.types";
-import { useState, useEffect } from "react";
+import { Fragment, useState, useEffect } from "react";
 import { useSupabase } from "@/app/supabase-provider";
 import { useRouter } from "next/navigation";
 import { Toaster, toast } from "sonner";
+import { Dialog, Transition } from "@headlessui/react";
 import {
   TextInput,
   Title,
@@ -24,6 +25,7 @@ export default function UserForm() {
   const [newusername, setNewUsername] = useState("");
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(true);
+  const [visible, setVisible] = useState(false);
   const { supabase } = useSupabase();
   const router = useRouter();
   const style = {
@@ -85,6 +87,20 @@ export default function UserForm() {
     setPassword("");
   };
 
+  const handleDelete = async () => {
+    const {
+      data: { user },
+    } = await supabase.auth.getUser();
+    const { data, error } = await supabase
+      .from("auth.users")
+      .delete()
+      .eq("id", user.id);
+    if (error) {
+      toast.error("Could not delete user");
+    } else {
+      router.push("/register");
+    }
+  };
   const handleLogout = async () => {
     await supabase.auth.signOut();
 
@@ -129,6 +145,12 @@ export default function UserForm() {
               }}
             >
               Mail Server
+            </span>
+            <span
+              className="mt-3 cursor-pointer rounded-md py-2 px-4 text-red-400 hover:font-semibold"
+              onClick={() => setVisible(true)}
+            >
+              Delete account
             </span>
           </aside>
           <main className="flex h-full w-3/4 flex-col p-4">
@@ -236,6 +258,76 @@ export default function UserForm() {
                 </div>
               </div>
             )}
+
+            <Transition appear show={visible} as={Fragment}>
+              <Dialog
+                as="div"
+                className="relative z-10"
+                onClose={() => setVisible(false)}
+              >
+                <Transition.Child
+                  as={Fragment}
+                  enter="ease-out duration-300"
+                  enterFrom="opacity-0"
+                  enterTo="opacity-100"
+                  leave="ease-in duration-200"
+                  leaveFrom="opacity-100"
+                  leaveTo="opacity-0"
+                >
+                  <div className="fixed inset-0 bg-black/50" />
+                </Transition.Child>
+
+                <div className="fixed inset-0 overflow-y-auto">
+                  <div className="flex min-h-full items-center justify-center p-4 text-center">
+                    <Transition.Child
+                      as={Fragment}
+                      enter="ease-out duration-300"
+                      enterFrom="opacity-0 scale-95"
+                      enterTo="opacity-100 scale-100"
+                      leave="ease-in duration-200"
+                      leaveFrom="opacity-100 scale-100"
+                      leaveTo="opacity-0 scale-95"
+                    >
+                      <Dialog.Panel className="w-full max-w-md overflow-hidden rounded-2xl bg-white p-6 text-left align-middle shadow-xl transition-all">
+                        <Dialog.Title
+                          as="h3"
+                          className="text-xl font-medium leading-6 text-red-500"
+                        >
+                          Deactivate your account
+                        </Dialog.Title>
+                        <div className="mt-3">
+                          <p className="text-base">
+                            Are you sure you want to deactivate your account?
+                          </p>
+                          <p className="text-base">
+                            All of your data will be permanently removed. This
+                            action cannot be undone.
+                          </p>
+                        </div>
+                        <div className="flex flex-row items-center justify-end gap-2">
+                          <Button
+                            size="xs"
+                            variant="secondary"
+                            className="mt-4 w-24 rounded-md border-indigo-400 px-4 py-2 text-center text-indigo-400 hover:bg-indigo-100 focus:outline-none"
+                            onClick={() => setVisible(false)}
+                          >
+                            Cancel
+                          </Button>
+                          <Button
+                            size="xs"
+                            variant="secondary"
+                            className="mt-4 w-24 rounded-md border-red-400 px-4 py-2 text-center text-red-400 hover:bg-red-100 focus:outline-none"
+                            onClick={handleDelete}
+                          >
+                            Delete
+                          </Button>
+                        </div>
+                      </Dialog.Panel>
+                    </Transition.Child>
+                  </div>
+                </div>
+              </Dialog>
+            </Transition>
           </main>
         </div>
       )}
