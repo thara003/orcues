@@ -1,13 +1,12 @@
 import React from "react";
-import UserInfo from "@/components/app/user-info";
+import UserForm from "@/components/app/user-form";
+import { Title } from "@tremor/react";
 
 const SettingsPage = () => {
   return (
-    <div className="flex h-screen w-screen items-center justify-center overscroll-none">
-      {/* <h1 className="text-4xl font-bold text-black">
-        Analytics is under construction.
-      </h1> */}
-      <UserInfo />
+    <div className="mx-auto max-w-7xl p-4 md:p-10">
+      <Title>Account Settings</Title>
+      <UserForm />
     </div>
   );
 };

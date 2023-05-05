@@ -36,7 +36,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className={clsx(inter.variable, "bg-white")}>
-      <body className="flex h-full flex-col scroll-smooth bg-gray-50 antialiased">
+      <body className="flex flex-col scroll-smooth antialiased">
         <SupabaseProvider>{children}</SupabaseProvider>
       </body>
     </html>

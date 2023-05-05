@@ -6,9 +6,12 @@ import { Disclosure, Menu, Transition } from "@headlessui/react";
 import Image from "next/image";
 import Link from "next/link";
 import cx from "classnames";
+import { useSupabase } from "@/app/supabase-provider";
+import { useRouter } from "next/navigation";
 
 const navigation = [
   { name: "Dashboard", href: "/dashboard" },
+  { name: "Analytics", href: "/analytics" },
   { name: "Preferences", href: "/preferences" },
 ];
 
@@ -21,6 +24,13 @@ const projectNav = (slug) => [
 export default function AppNav() {
   const pathname = usePathname();
   const slug = pathname.split("/");
+  const { supabase } = useSupabase();
+  const router = useRouter();
+  const handleLogout = async () => {
+    await supabase.auth.signOut();
+
+    router.push("/login");
+  };
 
   return (
     <Disclosure as="nav" className="bg-white shadow-sm">
@@ -138,6 +148,7 @@ export default function AppNav() {
                               active ? "bg-gray-100" : "",
                               "flex w-full px-4 py-2 text-sm text-gray-700",
                             )}
+                            onClick={handleLogout}
                           >
                             Sign out
                           </button>
