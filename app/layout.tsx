@@ -11,10 +11,10 @@ const inter = Inter({
 
 export const metadata: Metadata = {
   title: {
-    default: "The Open Source Newsletter Subscription Platform | Orcues",
+    default: "The Open Source Newsletter Management for Supa Users | Orcues",
     template: `%s | Orcues`,
   },
-  description: "The Open Source Email Marketing Tool for 21st Century.",
+  description: "Now you can manage your newsletter with Orcues effortlessly.",
   keywords: ["Orcues", "Open Source", "Email", "Marketing", "Platform"],
   robots: {
     index: true,
@@ -35,7 +35,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={clsx(inter.variable, "bg-white")}>
+    <html lang="en" className={clsx(inter.variable, "bg-zinc-50")}>
       <body className="flex flex-col scroll-smooth antialiased">
         <SupabaseProvider>{children}</SupabaseProvider>
       </body>

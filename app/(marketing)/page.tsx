@@ -1,26 +1,17 @@
-import Image from "next/image";
-
 export default function Home() {
-
   return (
-    <>
-      <div className="max-h-screen">
-        <div className="flex flex-col items-center justify-center pt-14">
-          <Image
-            src="/images/product-launch.svg"
-            alt="Orcues Logo"
-            width={500}
-            height={500}
-          />
-          <h1 className="px-8 py-8 text-center text-2xl font-bold text-black">
-            We are building{" "}
-            <span className="bg-gradient-to-r from-violet-600 to-indigo-600 bg-clip-text text-transparent">
-              Orcues
-            </span>{" "}
-            🍀
+    <section className="bg-zinc-50">
+      <div className="mx-auto max-w-6xl py-8 px-4 sm:py-24 sm:px-6 lg:px-8">
+        <div className="sm:align-center sm:flex sm:flex-col">
+          <h1 className="text-4xl font-extrabold text-zinc-900 sm:text-center sm:text-6xl">
+            Pricing Plans
           </h1>
+          <p className="m-auto mt-5 max-w-2xl text-xl text-zinc-700 sm:text-center sm:text-2xl">
+            Start building for free, then add a site plan to go live. Account
+            plans unlock additional features.
+          </p>
         </div>
       </div>
-    </>
+    </section>
   );
 }

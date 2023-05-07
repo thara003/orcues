@@ -1,49 +1,54 @@
 "use client";
 
-import { motion, AnimatePresence } from "framer-motion";
-import NextLink from "next/link";
+import Link from "next/link";
+import { useRouter } from "next/navigation";
 import Image from "next/image";
 
-const FADE_IN_ANIMATION_SETTINGS = {
-  initial: { opacity: 0 },
-  animate: { opacity: 1 },
-  exit: { opacity: 0 },
-  transition: { duration: 0.2 },
-};
-
-const Nav = () => {
+const Navbar = () => {
+  const router = useRouter();
   return (
-    <header className="ease sticky top-0 z-30 backdrop-blur transition-all duration-[0.4s]">
-      <div className="relative mx-auto max-w-[1200px] px-4 sm:px-6 lg:px-8">
-        <nav
-          id="main-nav"
-          className="flex h-20 justify-between py-6 lg:items-center lg:justify-start"
-        >
-          <div className="flex justify-start lg:w-0 lg:flex-1">
-            <NextLink href="/">
-              <Image
-                src="/logo-wordmark--light.png"
-                alt="Orcues Logo"
-                width={180}
-                height={180}
-              />
-            </NextLink>
-          </div>
-          <div className="hidden md:inline-block lg:justify-end">
-            <AnimatePresence>
-              <motion.a
-                {...FADE_IN_ANIMATION_SETTINGS}
+    <nav className="sticky top-0 z-40 bg-zinc-50 transition-all duration-150">
+      <a href="#skip" className="sr-only focus:not-sr-only">
+        Skip to content
+      </a>
+      <div className="mx-auto max-w-6xl px-6">
+        <div className="align-center relative flex flex-row justify-between py-4 md:py-6">
+          <div className="flex flex-1 items-center">
+            <Link
+              href="/"
+              className="transform cursor-pointer duration-100 ease-in-out"
+              aria-label="Logo"
+            >
+              <Image src="/logo.png" alt="Orcues Logo" width={40} height={40} />
+            </Link>
+            <nav className="ml-6 hidden space-x-2 lg:block">
+              <Link
                 href="#"
-                className="hover:bg-brand-600 rounded-[12px] bg-black px-6 py-3 text-sm font-semibold text-white shadow-lg transition"
+                className="inline-flex cursor-pointer items-center rounded-md p-1 font-medium leading-6 text-zinc-700 ring-pink-500 ring-opacity-50 transition duration-75 ease-in-out hover:text-zinc-800 focus:text-zinc-100 focus:outline-none focus:ring-2"
               >
-                Get Started
-              </motion.a>
-            </AnimatePresence>
+                Pricing
+              </Link>
+              <Link
+                href="#"
+                className="inline-flex cursor-pointer items-center rounded-md p-1 font-medium leading-6 text-zinc-700 ring-pink-500 ring-opacity-50 transition duration-75 ease-in-out hover:text-zinc-800 focus:text-zinc-100 focus:outline-none focus:ring-2"
+              >
+                Account
+              </Link>
+            </nav>
           </div>
-        </nav>
+
+          <div className="flex flex-1 justify-end space-x-8">
+            <Link
+              href="/login"
+              className="inline-flex cursor-pointer items-center rounded-md p-1 font-medium leading-6 text-zinc-700 ring-pink-500 ring-opacity-50 transition duration-75 ease-in-out hover:text-zinc-800 focus:text-zinc-100 focus:outline-none focus:ring-2"
+            >
+              Sign in
+            </Link>
+          </div>
+        </div>
       </div>
-    </header>
+    </nav>
   );
 };
 
-export default Nav;
+export default Navbar;
