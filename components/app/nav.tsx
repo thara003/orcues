@@ -20,27 +20,14 @@ const Navbar = () => {
               aria-label="Logo"
             >
               <Image src="/logo.png" alt="Orcues Logo" width={40} height={40} />
+              <span className="sr-only">Orcues</span>
             </Link>
-            <nav className="ml-6 hidden space-x-2 lg:block">
-              <Link
-                href="#"
-                className="inline-flex cursor-pointer items-center rounded-md p-1 font-medium leading-6 text-zinc-700 ring-pink-500 ring-opacity-50 transition duration-75 ease-in-out hover:text-zinc-800 focus:text-zinc-100 focus:outline-none focus:ring-2"
-              >
-                Pricing
-              </Link>
-              <Link
-                href="#"
-                className="inline-flex cursor-pointer items-center rounded-md p-1 font-medium leading-6 text-zinc-700 ring-pink-500 ring-opacity-50 transition duration-75 ease-in-out hover:text-zinc-800 focus:text-zinc-100 focus:outline-none focus:ring-2"
-              >
-                Account
-              </Link>
-            </nav>
           </div>
 
           <div className="flex flex-1 justify-end space-x-8">
             <Link
               href="/login"
-              className="inline-flex cursor-pointer items-center rounded-md p-1 font-medium leading-6 text-zinc-700 ring-pink-500 ring-opacity-50 transition duration-75 ease-in-out hover:text-zinc-800 focus:text-zinc-100 focus:outline-none focus:ring-2"
+              className="inline-flex cursor-pointer items-center rounded-md p-1 font-medium leading-6 text-zinc-700 transition duration-75 ease-in-out hover:text-zinc-800 focus:text-zinc-100 focus:outline-none focus:ring-2"
             >
               Sign in
             </Link>
