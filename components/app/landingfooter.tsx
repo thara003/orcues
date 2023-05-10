@@ -1,6 +1,4 @@
 import React from "react";
-import { BsGithub } from "react-icons/Bs";
-import { IoIosArrowDropleftCircle } from "react-icons/io";
 import { FaTwitter, FaInstagram, FaGithub } from "react-icons/fa";
 
 export default function FooterL() {
