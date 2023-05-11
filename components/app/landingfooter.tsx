@@ -4,7 +4,7 @@ import { FaTwitter, FaInstagram, FaGithub } from "react-icons/fa";
 export default function FooterL() {
   return (
     <>
-      <div className="mx-auto mb-20 w-[100%]  bg-white px-2.5 py-20 md:px-20">
+      <div className="mx-auto mb-20 w-[100%]  px-2.5 py-20 md:px-20">
         <div className="mx-auto max-w-md text-center sm:max-w-xl">
           <h2 className="font-display bg-gradient-to-r from-gray-800 via-slate-700 to-gray-800 bg-clip-text text-4xl font-extrabold leading-tight text-transparent sm:text-5xl sm:leading-tight">
             Proudly open-source
