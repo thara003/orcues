@@ -2,6 +2,7 @@ import "../styles/globals.css";
 import { Metadata } from "next";
 import { Inter } from "next/font/google";
 import clsx from "clsx";
+import LocalFont from "next/font/local";
 import SupabaseProvider from "./supabase-provider";
 
 const inter = Inter({
@@ -9,12 +10,17 @@ const inter = Inter({
   subsets: ["latin"],
 });
 
+const calSans = LocalFont({
+  src: "../public/fonts/CalSans-SemiBold.ttf",
+  variable: "--font-calsans",
+});
+
 export const metadata: Metadata = {
   title: {
-    default: "The Open Source Newsletter Subscription Platform | Orcues",
-    template: `%s · Orcues`,
+    default: "Orcues | App",
+    template: `%s | Orcues`,
   },
-  description: "The Open Source Email Marketing Tool for 21st Century.",
+  description: "Now you can manage your newsletter with Orcues effortlessly.",
   keywords: ["Orcues", "Open Source", "Email", "Marketing", "Platform"],
   robots: {
     index: true,
@@ -35,7 +41,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={clsx(inter.variable, "bg-white")}>
+    <html
+      lang="en"
+      className={clsx(inter.variable, calSans.variable, "bg-black")}
+      suppressHydrationWarning
+    >
       <body className="flex flex-col scroll-smooth antialiased">
         <SupabaseProvider>{children}</SupabaseProvider>
       </body>

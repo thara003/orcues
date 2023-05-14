@@ -1,4 +1,6 @@
 import Nav from "@/components/app/nav";
+import { SiteFooter } from "@/components/site-footer";
+import Link from "next/link";
 interface MarketingLayoutProps {
   children: React.ReactNode;
 }
@@ -9,7 +11,7 @@ export default async function MarketingLayout({
   return (
     <div className="flex min-h-screen flex-col">
       <Nav />
-      <main>{children}</main>
+      <main className="grow">{children}</main>
     </div>
   );
 }

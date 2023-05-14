@@ -8,6 +8,7 @@ import { Loader2 } from "lucide-react";
 
 export default function SignupForm() {
   const { supabase } = useSupabase();
+  const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
@@ -17,6 +18,11 @@ export default function SignupForm() {
     const { error } = await supabase.auth.signUp({
       email: email,
       password: password,
+      options: {
+        data: {
+          full_name: name,
+        },
+      },
     });
 
     if (error) {
@@ -31,7 +37,20 @@ export default function SignupForm() {
   return (
     <div className="grid gap-5">
       <div className="grid gap-1">
-        <Toaster position="bottom-right" />
+        <label htmlFor="email" className="text-sm font-medium text-gray-700">
+          Name
+        </label>
+        <input
+          type="text"
+          name="name"
+          id="name"
+          onChange={(e) => {
+            setName(e.target.value);
+          }}
+          className="placeholder:text-gray-400shadow-sm block w-full rounded-md border border-gray-300 px-3 py-2 focus:border-2 focus:border-violet-500 focus:outline-none focus:ring-violet-500 sm:text-sm"
+          placeholder="Enter your email"
+          required
+        />
         <label htmlFor="email" className="text-sm font-medium text-gray-700">
           Email
         </label>
@@ -42,7 +61,7 @@ export default function SignupForm() {
           onChange={(e) => {
             setEmail(e.target.value);
           }}
-          className="block w-full rounded-md border border-gray-300 px-3 py-2 placeholder-gray-400 shadow-sm focus:border-2 focus:border-violet-500 focus:outline-none focus:ring-violet-500 sm:text-sm"
+          className="placeholder:text-gray-400shadow-sm block w-full rounded-md border border-gray-300 px-3 py-2 focus:border-2 focus:border-violet-500 focus:outline-none focus:ring-violet-500 sm:text-sm"
           placeholder="Enter your email"
           required
         />

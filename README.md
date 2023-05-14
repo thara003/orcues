@@ -1,5 +1,5 @@
 <p align="center">
-<img src="./public/logo.png" height="150">
+<img src="./public/readme-cover.png" height="150">
 <h1 align="center"><b>Orcues</b></h1>
 <p align="center">
   Newsletter subscription management for Supabase users.
