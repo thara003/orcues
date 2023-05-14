@@ -1,4 +1,6 @@
 import Nav from "@/components/app/nav";
+import { SiteFooter } from "@/components/site-footer";
+import Link from "next/link";
 interface MarketingLayoutProps {
   children: React.ReactNode;
 }
