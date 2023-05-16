@@ -23,17 +23,6 @@ export const useUser = () => {
         setUser(null);
       }
     }
-
-    const {
-      data: { subscription },
-    } = supabase.auth.onAuthStateChange(async (event) => {
-      if (event === "SIGNED_OUT") {
-        setUser(null);
-      }
-    });
-
-    console.log("inside useUser", user);
-
     getUser();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
