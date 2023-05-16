@@ -2,8 +2,8 @@ import { useSupabase } from "@/app/supabase-provider";
 import { useEffect, useState } from "react";
 
 type User = {
-  name: string;
   id: string;
+  name: string;
 };
 
 export const useUser = () => {
@@ -12,10 +12,16 @@ export const useUser = () => {
 
   useEffect(() => {
     async function getUser() {
-      const {
-        data: { user },
-      } = await supabase.auth.getUser();
-      if (!user) return setUser(null);
+      try {
+        const {
+          data: { user },
+        } = await supabase.auth.getUser();
+        // @ts-ignore
+        setUser(user);
+      } catch (error) {
+        console.error("Error retrieving user:", error.message);
+        setUser(null);
+      }
     }
 
     const {
@@ -25,6 +31,8 @@ export const useUser = () => {
         setUser(null);
       }
     });
+
+    console.log("inside useUser", user);
 
     getUser();
     // eslint-disable-next-line react-hooks/exhaustive-deps
