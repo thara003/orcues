@@ -15,23 +15,23 @@ export default function Dashboard() {
 
       <Grid numColsMd={2} className="mt-6 gap-6">
         <Card className="hover:border hover:border-gray-800">
-          <Link href="/project/1">
-            <div className="h-36">Project 1</div>
+          <Link href="/campaign/1">
+            <div className="h-36">Campaign 1</div>
           </Link>
         </Card>
         <Card className="hover:border hover:border-gray-800">
-          <Link href="/project/1">
-            <div className="h-36">Project 2</div>
+          <Link href="/campaign/1">
+            <div className="h-36">Campaign 2</div>
           </Link>
         </Card>
         <Card className="hover:border hover:border-gray-800">
-          <Link href="/project/1">
-            <div className="h-36">Project 3</div>
+          <Link href="/campaign/1">
+            <div className="h-36">Campaign 3</div>
           </Link>
         </Card>
         <Card className="hover:border hover:border-gray-800">
-          <Link href="/project/1">
-            <div className="h-36">Project 4</div>
+          <Link href="/campaign/1">
+            <div className="h-36">Campaign 4</div>
           </Link>
         </Card>
       </Grid>
