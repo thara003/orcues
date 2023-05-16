@@ -5,6 +5,7 @@ import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { Toaster, toast } from "sonner";
 import { Loader2 } from "lucide-react";
+import { absoluteUrl } from "@/lib/utils";
 
 export default function SignupForm() {
   const { supabase } = useSupabase();
@@ -22,6 +23,7 @@ export default function SignupForm() {
         data: {
           full_name: name,
         },
+        emailRedirectTo: absoluteUrl("/dashboard"),
       },
     });
 

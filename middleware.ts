@@ -11,16 +11,17 @@ export async function middleware(req: NextRequest) {
     data: { session },
   } = await supabase.auth.getSession();
 
-  if (!session) {
-    let from = req.nextUrl.pathname;
-    if (req.nextUrl.search) {
-      from += req.nextUrl.search;
-    }
+  // TODO: Uncomment this when the redirect is proper
+  // if (!session) {
+  //   let from = req.nextUrl.pathname;
+  //   if (req.nextUrl.search) {
+  //     from += req.nextUrl.search;
+  //   }
 
-    return NextResponse.redirect(
-      new URL(`/login?from=${encodeURIComponent(from)}`, req.url),
-    );
-  }
+  //   return NextResponse.redirect(
+  //     new URL(`/login?from=${encodeURIComponent(from)}`, req.url),
+  //   );
+  // }
 
   return res;
 }

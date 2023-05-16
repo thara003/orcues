@@ -43,7 +43,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={clsx(inter.variable, calSans.variable, "bg-black")}
+      className={clsx(inter.variable, calSans.variable, "bg-zinc-50")}
       suppressHydrationWarning
     >
       <body className="flex flex-col scroll-smooth antialiased">
