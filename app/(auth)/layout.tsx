@@ -24,10 +24,10 @@ export default function AuthLayout({ children }: AuthLayoutProps) {
       <div className="hidden h-screen w-7/12 flex-col items-center justify-center bg-gradient-to-r from-indigo-300 to-purple-400 shadow-xl xl:flex">
         <div className="flex w-2/3 flex-col items-center justify-center rounded-3xl bg-slate-50 bg-opacity-20 p-8">
           <h2 className="text-3xl text-white">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Ab rem
-            molestias accusamus beatae, perferendis asperiores minima delectus,
-            assumenda architecto maiores eveniet velit eos officiis iste ipsam
-            iure esse facilis ex?
+            Welcome to Orcues: Your all-in-one solution for seamless newsletter
+            management. Join us to enhance your marketing pipeline with our
+            cost-effective, privacy-focused platform built on open source
+            technologies.
           </h2>
         </div>
       </div>

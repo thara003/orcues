@@ -30,7 +30,7 @@ export default function Home() {
           <button className="md:text-md mt-8 inline-flex items-center justify-center rounded-md border border-transparent bg-zinc-900 px-5 py-3 text-base font-medium text-white transition-all hover:bg-zinc-700 md:py-2 md:px-4">
             Get started
           </button>
-          <button className="md:text-md mt-8 inline-flex items-center justify-center rounded-md border border-transparent bg-zinc-50 px-5 py-3 text-base font-medium text-zinc-600 hover:bg-zinc-100 md:py-2 md:px-4">
+          <button className=" md:text-md mt-8 inline-flex items-center justify-center rounded-md border border-transparent bg-zinc-50 px-5 py-3 text-base font-medium text-zinc-600 transition-all hover:bg-slate-700 hover:text-white  md:py-2 md:px-4">
             Live demo
           </button>
         </div>
