@@ -62,7 +62,7 @@ const Navbar = () => {
           <div className="flex flex-1 justify-end space-x-8">
             <Link
               href="https://github.com/thara003/orcues"
-              className="inline-flex cursor-pointer items-center rounded-md p-1 font-medium leading-6 text-zinc-200 transition duration-75 ease-in-out"
+              className=" inline-flex cursor-pointer items-center rounded-md border border-white p-1 font-medium leading-6 text-zinc-200 transition duration-75 ease-in-out"
             >
               GitHub
             </Link>

@@ -2,7 +2,7 @@ import React from "react";
 
 export default function Howitworks() {
   return (
-    <div className=" mt-10 grid grid-cols-1 place-content-center gap-6 md:grid-cols-2 lg:grid-cols-3 ">
+    <div className=" grid grid-cols-1 place-content-center gap-6 md:grid-cols-2 lg:grid-cols-3 ">
       <div className=" divide-y divide-zinc-600 rounded-lg bg-zinc-900 opacity-[0.8] shadow-sm  hover:border hover:border-fuchsia-900 hover:opacity-100 hover:transition-all">
         <div className="p-6">
           <h2 className="text-2xl font-semibold leading-6 text-white">
