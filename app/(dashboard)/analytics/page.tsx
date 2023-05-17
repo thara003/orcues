@@ -7,6 +7,7 @@ import {
   AreaChart,
   Card,
   Grid,
+  LineChart,
   Col,
 } from "@tremor/react";
 
@@ -77,11 +78,21 @@ export default function AnalyticsPage() {
           />
         </Card>
         <Col>
-          {/* TODO: remove these classes once the pie chart is ready - h-full flex flex-col items-center  */}
-          <Card className="flex h-full flex-col items-center justify-center">
-            <Text className="text-center">
-              Pie chart is under construction 🛠
-            </Text>
+          <Card>
+            <LineChart
+              className="mt-6"
+              data={chartdata}
+              index="year"
+              categories={[
+                "Campaign 1",
+                "Campaign 2",
+                "Campaign 3",
+                "Campaign 4",
+              ]}
+                            colors={["blue", "teal", "amber", "rose"]}
+              valueFormatter={dataFormatter}
+              yAxisWidth={40}
+            />
           </Card>
         </Col>
         <Col numColSpan={1} numColSpanLg={2}>

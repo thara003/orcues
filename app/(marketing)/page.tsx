@@ -1,5 +1,6 @@
 import { SiteFooter } from "@/components/app/site-footer";
 import Link from "next/link";
+import Image from "next/image";
 
 export default function Home() {
   return (
@@ -33,10 +34,16 @@ export default function Home() {
             Live demo
           </button>
         </div>
-        <div className="mt-14">
-          {/* create me a box */}
-          <div className="flex h-[700px] items-center justify-center rounded-xl bg-zinc-300 p-4 shadow-lg">
-            Dashboard image
+        <div className="mt-8">
+          <div className="flex h-[700px] items-center justify-center rounded-xl bg-transparent p-4 shadow-lg">
+            <Image
+              src="/images/chart.png"
+              alt="dashboard"
+              className="rounded-2xl"
+              loading="lazy"
+              height={1600}
+              width={1600}
+            />
           </div>
         </div>
         <div className="mt-28 flex flex-col gap-6">
