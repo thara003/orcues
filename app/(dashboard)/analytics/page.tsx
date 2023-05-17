@@ -63,8 +63,8 @@ export default function AnalyticsPage() {
       <Text>View your overall analytics</Text>
       <Grid numCols={1} numColsMd={2} className="mt-6 gap-6">
         <Card>
-          <AreaChart
-            className="mt-4 h-72"
+          <BarChart
+            className="mt-6"
             data={chartdata}
             index="month"
             categories={[
@@ -75,6 +75,8 @@ export default function AnalyticsPage() {
             ]}
             colors={["blue", "teal", "amber", "rose"]}
             valueFormatter={dataFormatter}
+            yAxisWidth={48}
+            showXAxis={true}
           />
         </Card>
         <Col>
@@ -89,7 +91,7 @@ export default function AnalyticsPage() {
                 "Campaign 3",
                 "Campaign 4",
               ]}
-                            colors={["blue", "teal", "amber", "rose"]}
+              colors={["blue", "teal", "amber", "rose"]}
               valueFormatter={dataFormatter}
               yAxisWidth={40}
             />
@@ -97,8 +99,8 @@ export default function AnalyticsPage() {
         </Col>
         <Col numColSpan={1} numColSpanLg={2}>
           <Card>
-            <BarChart
-              className="mt-6"
+            <AreaChart
+              className="mt-4 h-72"
               data={chartdata}
               index="month"
               categories={[
@@ -109,8 +111,6 @@ export default function AnalyticsPage() {
               ]}
               colors={["blue", "teal", "amber", "rose"]}
               valueFormatter={dataFormatter}
-              yAxisWidth={48}
-              showXAxis={true}
             />
           </Card>
         </Col>
