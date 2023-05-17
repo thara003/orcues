@@ -1,7 +1,5 @@
 import Link from "next/link";
 import Image from "next/image";
-import Howitworks from "./howitworks";
-import { SiteFooter } from "@/components/app/site-footer";
 
 export default function Home() {
   return (
@@ -107,7 +105,6 @@ export default function Home() {
           </div>
         </div>
       </div>
-      <SiteFooter />
     </section>
   );
 }
