@@ -9,8 +9,10 @@ export default function CampaignForm({ workspace, onClose }) {
   const { supabase } = useSupabase();
   const [campaign_name, setCampaignName] = useState("");
   const [description, setDescription] = useState("");
+  const [loading, setLoading] = useState(false);
 
   const addCampaign = async () => {
+    setLoading(true);
     const { data: campaign, error } = await supabase.from("campaigns").insert([
       {
         name: campaign_name,
@@ -19,6 +21,7 @@ export default function CampaignForm({ workspace, onClose }) {
         description: description,
       },
     ]);
+    setLoading(false);
     const visible = false;
     onClose(visible);
 
@@ -66,6 +69,7 @@ export default function CampaignForm({ workspace, onClose }) {
           <Button
             size="xs"
             variant="secondary"
+            loading={loading}
             className="w-24 rounded-md border-indigo-400 px-4 py-2 text-center text-indigo-400 hover:bg-indigo-100 focus:outline-none"
             onClick={addCampaign}
           >

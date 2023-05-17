@@ -14,7 +14,7 @@ export default function Dashboard() {
   const { supabase } = useSupabase();
   const [visible, setVisible] = useState(false);
   const [workspace, setWorkspace] = useState([]);
-  const [campaign, setCampaign] = useState([]);
+  const [campaigns, setCampaigns] = useState([]);
   const getWorkspaces = async () => {
     const {
       data: { user },
@@ -29,33 +29,27 @@ export default function Dashboard() {
     console.log("workspace", workspace);
     setWorkspace(workspace);
 
-    let { data: campaign } = await supabase
-      .from("campaigns")
-      .select("*")
-      .eq("workspace_id", workspace[0]?.id);
-
-    console.log("campaign", campaign);
-    setCampaign(campaign);
+    getCampaigns(workspace)
   };
 
-  const getCampaigns = async () => {
-    let { data: campaign, error } = await supabase
+  const getCampaigns = async (workspace) => {
+    let { data: campaigns, error } = await supabase
       .from("campaigns")
       .select("*")
       .eq("workspace_id", workspace[0]?.id);
     if (error) console.log("error", error);
-    console.log("campaign", campaign, workspace);
-    setCampaign(campaign);
+    console.log("campaign", campaigns);
+    setCampaigns(campaigns);
   };
 
   useEffect(() => {
     getWorkspaces();
-    // getCampaigns();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const handleClose = (visible) => {
     setVisible(visible);
+    getCampaigns(workspace);
   };
 
   const cards = [
@@ -93,11 +87,11 @@ export default function Dashboard() {
       <Search />
 
       <Grid numColsMd={2} className="mt-6 gap-6">
-        {cards.map((card) => (
-          <Link key={card.id} href={`/campaign/${card.id}`}>
+        {campaigns.map((campaign) => (
+          <Link key={campaign.id} href={`/campaign/${campaign.id}`}>
             <div className="rounded-lg border border-zinc-300  bg-white p-6 shadow-sm hover:border-zinc-500">
-              <h2 className="text-lg font-normal">{card.title}</h2>
-              <p className="mt-2 text-sm text-gray-600">{card.content}</p>
+              <h2 className="text-lg font-normal">{campaign.name}</h2>
+              <p className="mt-2 text-sm text-gray-600">{campaign.description}</p>
             </div>
           </Link>
         ))}
