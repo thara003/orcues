@@ -18,7 +18,7 @@ export default function Home() {
               </span>
             </Link>
           </div>
-          <h1 className="mx-auto mt-5 max-w-2xl text-center font-display text-4xl font-extrabold leading-[1.15] text-zinc-50 sm:text-6xl sm:leading-[1.15]">
+          <h1 className="mx-auto mt-5 max-w-2xl text-center font-display text-4xl font-extrabold leading-[1.15] sm:text-6xl sm:leading-[1.15] text-transparent bg-gradient-to-t bg-clip-text from-zinc-100/50 to-white">
             Supercharge your email compaigns & newsletters
           </h1>
           <p className="m-auto mt-8 max-w-2xl text-xl text-zinc-600 sm:text-center">

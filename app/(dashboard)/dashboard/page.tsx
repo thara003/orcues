@@ -29,9 +29,8 @@ export default function Dashboard() {
   }, []);
 
   const cards = [
-    { id: 1, title: "Campaign 1", content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. " },
-    { id: 2, title: "Campaign 2", content: "Consectetur adipiscing elit enim ad minim veniam, quis nostrud exercitation ullamco laboris" },
-    { id: 3, title: "Campaign 3", content: "Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum." },
+    { id: 1, title: "Project Waitlist", content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. " },
+    { id: 2, title: "Marketing Blog", content: "Consectetur adipiscing elit enim ad minim veniam, quis nostrud exercitation ullamco laboris" },
     // Add more card objects as needed
   ];
 
@@ -45,7 +44,7 @@ export default function Dashboard() {
         {cards.map((card) => (
           <Link key={card.id} href={`/campaign/${card.id}`}>
             <div className="rounded-lg border border-zinc-300  bg-white p-6 shadow-sm hover:border-zinc-500">
-              <h2 className="text-lg font-medium">{card.title}</h2>
+              <h2 className="text-lg font-normal">{card.title}</h2>
               <p className="mt-2 text-gray-600 text-sm">{card.content}</p>
             </div>
           </Link>
