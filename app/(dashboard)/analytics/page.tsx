@@ -1,10 +1,18 @@
 "use client";
 import React from "react";
-import { Title, Text, BarChart, Toggle, ToggleItem, AreaChart } from "@tremor/react";
+import {
+  Title,
+  Text,
+  BarChart,
+  AreaChart,
+  Card,
+  Grid,
+  Col,
+} from "@tremor/react";
+
 import { useState } from "react";
 
-export default function AnalyticsPage () {
-
+export default function AnalyticsPage() {
   const [tab, setTab] = useState("1");
   const chartdata = [
     {
@@ -52,52 +60,50 @@ export default function AnalyticsPage () {
     <div className="mx-auto max-w-7xl p-4 md:p-10">
       <Title>Analytics</Title>
       <Text>View your overall analytics</Text>
-      <div className="flex flex-row justify-center my-1">
-      <Toggle
-      color="zinc"
-      defaultValue="1"
-      onValueChange={(value) => setTab(value)}
-    >
-      <ToggleItem value="1" text="Bar chart" />
-      <ToggleItem value="2" text="Area chart" />
-      <ToggleItem value="3" text="Pie chart" />
-    </Toggle>
-    </div>
-    {tab === "1"  && (
-      <BarChart
-      className="mt-6"
-      data={chartdata}
-      index="month"
-      categories={[
-        "Campaign 1",
-        "Campaign 2",
-        "Campaign 3",
-        "Campaign 4",
-      ]}
-      colors={["blue", "teal", "amber", "rose"]}
-      valueFormatter={dataFormatter}
-      yAxisWidth={48}
-      showXAxis={true}
-    />
-    )}
-    {tab === "2"  && (
-      <AreaChart
-      className="h-72 mt-4"
-      data={chartdata}
-      index="month"
-      categories={[
-        "Campaign 1",
-        "Campaign 2",
-        "Campaign 3",
-        "Campaign 4",
-      ]}
-      colors={["blue", "teal", "amber", "rose"]}
-      valueFormatter={dataFormatter}
-    />
-    )}
-     {tab === "3"  && (
-      <Text className="text-center">Pie chart is under construction 🛠</Text>
-    )}
+      <Grid numCols={1} numColsMd={2} className="mt-6 gap-6">
+        <Card>
+          <AreaChart
+            className="mt-4 h-72"
+            data={chartdata}
+            index="month"
+            categories={[
+              "Campaign 1",
+              "Campaign 2",
+              "Campaign 3",
+              "Campaign 4",
+            ]}
+            colors={["blue", "teal", "amber", "rose"]}
+            valueFormatter={dataFormatter}
+          />
+        </Card>
+        <Col>
+          {/* TODO: remove these classes once the pie chart is ready - h-full flex flex-col items-center  */}
+          <Card className="flex h-full flex-col items-center justify-center">
+            <Text className="text-center">
+              Pie chart is under construction 🛠
+            </Text>
+          </Card>
+        </Col>
+        <Col numColSpan={1} numColSpanLg={2}>
+          <Card>
+            <BarChart
+              className="mt-6"
+              data={chartdata}
+              index="month"
+              categories={[
+                "Campaign 1",
+                "Campaign 2",
+                "Campaign 3",
+                "Campaign 4",
+              ]}
+              colors={["blue", "teal", "amber", "rose"]}
+              valueFormatter={dataFormatter}
+              yAxisWidth={48}
+              showXAxis={true}
+            />
+          </Card>
+        </Col>
+      </Grid>
     </div>
   );
-};
+}
