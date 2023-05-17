@@ -31,14 +31,15 @@ export default function SignupForm() {
       setLoading(false);
       toast.error(error.message);
     } else {
-      setLoading(false);
       toast.success("Check your email for the login link!");
+      setLoading(false);
     }
   };
 
   return (
     <div className="grid gap-5">
       <div className="grid gap-1">
+      <Toaster position="bottom-right" />
         <label htmlFor="email" className="text-sm font-medium text-gray-700">
           Name
         </label>

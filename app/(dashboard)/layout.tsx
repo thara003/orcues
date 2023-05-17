@@ -15,6 +15,7 @@ export default async function DashboardLayout({
     <div className="flex min-h-screen flex-col">
       <InfoHeader />
       <Suspense fallback="...">
+        {/* <Header /> */}
         <AppNav />
       </Suspense>
       <main>{children}</main>

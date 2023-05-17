@@ -3,6 +3,7 @@
 import { usePathname, useRouter } from "next/navigation";
 import { useTransition } from "react";
 import { Search as SearchIcon } from "lucide-react";
+import { Button } from "@tremor/react";
 
 export default function Search({ disabled }: { disabled?: boolean }) {
   const { replace } = useRouter();
@@ -48,6 +49,18 @@ export default function Search({ disabled }: { disabled?: boolean }) {
           onChange={(e) => handleSearch(e.target.value)}
         />
       </div>
+      {/* <Button
+      size="xs"
+      variant="secondary"
+      >
+      Search
+      </Button>
+      <Button
+      size="xs"
+      variant="secondary"
+      >
+      Refresh
+      </Button> */}
 
       {isPending && (
         <div className="absolute right-0 top-0 bottom-0 flex items-center justify-center">
