@@ -14,7 +14,6 @@ import {
 import { useState } from "react";
 
 export default function AnalyticsPage() {
-  const [tab, setTab] = useState("1");
   const chartdata = [
     {
       month: "Jan",
