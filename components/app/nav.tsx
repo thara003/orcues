@@ -8,9 +8,9 @@ const Navbar = () => {
   // const isLoggedIn = user !== null;
   return (
     <nav className="sticky top-0 z-40 bg-black transition-all duration-150">
-      <a href="#skip" className="sr-only focus:not-sr-only">
+      {/* <a href="#skip" className="sr-only focus:not-sr-only">
         Skip to content
-      </a>
+      </a> */}
       <div className="mx-auto max-w-6xl px-6">
         <div className="align-center relative flex flex-row justify-between py-4 md:py-6">
           <div className="flex flex-1 items-center">
