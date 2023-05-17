@@ -21,9 +21,8 @@ export default function UserForm() {
   const [tab, setTab] = useState(0);
   const [fullname, setFullname] = useState("");
   const [newfullname, setNewFullname] = useState("");
-  const [username, setUsername] = useState("");
-  const [newusername, setNewUsername] = useState("");
   const [password, setPassword] = useState("");
+  const [email, setEmail] = useState("");
   const [loading, setLoading] = useState(true);
   const [visible, setVisible] = useState(false);
   const { supabase } = useSupabase();
@@ -49,9 +48,8 @@ export default function UserForm() {
       .eq("id", user.id);
     setLoading(false);
     setFullname(profiles[0].full_name);
-    setUsername(profiles[0].username);
     setNewFullname(profiles[0].full_name);
-    setNewUsername(profiles[0].username);
+  setEmail(user.email);
     if (!user) {
       toast.error("Could not fetch user details");
     }
@@ -65,8 +63,6 @@ export default function UserForm() {
       .from("profiles")
       .update({
         full_name: newfullname,
-        username: newusername,
-        email: user.email,
       })
       .eq("id", user.id);
 
@@ -84,7 +80,6 @@ export default function UserForm() {
   const cancelUpdate = () => {
     setIsEdit(false);
     setNewFullname(fullname);
-    setNewUsername(username);
     setPassword("");
   };
 
@@ -158,18 +153,6 @@ export default function UserForm() {
             {tab === 0 && (
               <div>
                 <Title>Profile settings</Title>
-                <div className="my-6 flex flex-row items-center">
-                  <Subtitle className="w-1/3">Username</Subtitle>
-                  <TextInput
-                    placeholder="Enter your username"
-                    type="text"
-                    value={newusername}
-                    onChange={(e) => {
-                      setNewUsername(e.target.value);
-                      setIsEdit(true);
-                    }}
-                  />
-                </div>
                 <div className="mb-4 flex flex-row items-center">
                   <Subtitle className="w-1/3">Full name</Subtitle>
                   <TextInput
@@ -180,6 +163,14 @@ export default function UserForm() {
                       setNewFullname(e.target.value);
                       setIsEdit(true);
                     }}
+                  />
+                </div>
+                <div className="my-6 flex flex-row items-center">
+                  <Subtitle className="w-1/3">Email</Subtitle>
+                  <TextInput
+                    type="text"
+                    disabled={true}
+                    value={email}
                   />
                 </div>
                 <div className="flex flex-row items-center justify-end gap-2">
