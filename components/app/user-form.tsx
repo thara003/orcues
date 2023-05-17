@@ -45,7 +45,7 @@ export default function UserForm() {
     let { data: profiles, error } = await supabase
       .from("profiles")
       .select("*")
-      .eq("id", user.id);
+      .eq("id", user?.id);
     setLoading(false);
     setFullname(profiles[0].full_name);
     setNewFullname(profiles[0].full_name);

@@ -1,5 +1,6 @@
-import { SiteFooter } from "@/components/site-footer";
+import { SiteFooter } from "@/components/app/site-footer";
 import Link from "next/link";
+import Image from "next/image";
 
 export default function Home() {
   return (
@@ -17,7 +18,7 @@ export default function Home() {
               </span>
             </Link>
           </div>
-          <h1 className="mx-auto mt-5 max-w-2xl text-center font-display text-4xl font-extrabold leading-[1.15] text-zinc-50 sm:text-6xl sm:leading-[1.15]">
+          <h1 className="mx-auto mt-5 max-w-2xl text-center font-display text-4xl font-extrabold leading-[1.15] sm:text-6xl sm:leading-[1.15] text-transparent bg-gradient-to-t bg-clip-text from-zinc-100/50 to-white">
             Supercharge your email compaigns & newsletters
           </h1>
           <p className="m-auto mt-8 max-w-2xl text-xl text-zinc-600 sm:text-center">
@@ -33,10 +34,16 @@ export default function Home() {
             Live demo
           </button>
         </div>
-        <div className="mt-14">
-          {/* create me a box */}
-          <div className="flex h-[700px] items-center justify-center rounded-xl bg-zinc-300 p-4 shadow-lg">
-            Dashboard image
+        <div className="mt-8">
+          <div className="flex h-[700px] items-center justify-center rounded-xl bg-transparent p-4 shadow-lg">
+            <Image
+              src="/images/chart.png"
+              alt="dashboard"
+              className="rounded-2xl"
+              loading="lazy"
+              height={1600}
+              width={1600}
+            />
           </div>
         </div>
         <div className="mt-28 flex flex-col gap-6">

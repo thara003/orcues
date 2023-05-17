@@ -7,6 +7,7 @@ export const metadata: Metadata = {
 };
 
 export default function Login() {
+
   return (
     <div className="xxl:justify-start flex w-full flex-col justify-center space-y-6 md:w-2/3">
       <div className="flex flex-col space-y-2 text-start">

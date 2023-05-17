@@ -22,11 +22,7 @@ export default async function PostPage({ params }: PostPageProps) {
       <Text>
         A list of users retrieved from a MySQL database (PlanetScale).
       </Text>
-      <Search />
-      <Card className="mt-6">
-        {/* @ts-expect-error Server Component */}
-        <UsersTable />
-      </Card>
+      <UsersTable />
       <div className="mt-10 flex flex-col items-center justify-center py-2">
         <h1 className="text-xl font-bold text-black">Project Page</h1>
         <p>{post}</p>

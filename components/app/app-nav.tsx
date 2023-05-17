@@ -16,9 +16,9 @@ const navigation = [
 ];
 
 const projectNav = (slug) => [
-  { name: "Overview", href: `/project/${slug}` },
-  { name: "Analytics", href: `/project/${slug}/analytics` },
-  { name: "Settings", href: `/project/${slug}/settings` },
+  { name: "Overview", href: `/campaign/${slug}` },
+  { name: "Analytics", href: `/campaign/${slug}/analytics` },
+  { name: "Settings", href: `/campaign/${slug}/settings` },
 ];
 
 export default function AppNav() {
@@ -80,7 +80,7 @@ export default function AppNav() {
                 </Link>
 
                 <div className="hidden sm:-my-px sm:ml-6 sm:flex sm:space-x-8">
-                  {slug[1] === "project"
+                  {slug[1] === "campaign"
                     ? projectNav(slug[2]).map((item) => (
                         <Link
                           key={item.name}

@@ -1,7 +1,7 @@
 import { Suspense } from "react";
 import AppNav from "@/components/app/app-nav";
-import Footer from "@/components/app/footer";
-import Header from "@/components/app/header";
+import AppFooter from "@/components/app/app-footer";
+import InfoHeader from "@/components/app/info-header";
 
 interface DashboardLayoutProps {
   children: React.ReactNode;
@@ -13,12 +13,12 @@ export default async function DashboardLayout({
 
   return (
     <div className="flex min-h-screen flex-col">
+      <InfoHeader />
       <Suspense fallback="...">
-        <Header />
         <AppNav />
       </Suspense>
       <main>{children}</main>
-      <Footer />
+      {/* <AppFooter /> */}
     </div>
   );
 }
