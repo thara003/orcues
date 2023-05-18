@@ -1,5 +1,11 @@
 import Link from "next/link";
 import Image from "next/image";
+import { ArrowBigRight, ArrowRight } from "lucide-react";
+
+export const metadata = {
+  title: "The Open Source MailChimp Alternative",
+  description: "Orcues is an open source, self-hosted alternative of MailChimp, built with scalability and cost effectiveness in mind.",
+};
 
 export default function Home() {
   return (
@@ -21,17 +27,16 @@ export default function Home() {
             Supercharge your email compaigns & newsletters
           </h1>
           <p className="m-auto mt-8 max-w-3xl text-center text-xl  text-zinc-600">
-            An Open-source newsletter management for scalable and cost-effective
-            marketing. Ensures data privacy and transparency.
+            The open source, self-hosted alternative of MailChimp and other email campaign platforms. Built with scalability and cost effectiveness in mind ⚡️
           </p>
         </div>
-        <div className="flex justify-center gap-4  ">
-          <button className="md:text-md mt-8 inline-flex items-center justify-center rounded-md border border-white px-5 py-3  text-base font-medium text-white transition duration-300 ease-in-out hover:bg-white hover:text-black  md:py-2 md:px-4">
+        <div className="flex justify-center gap-4">
+          <Link href="https://github.com/thara003/orcues" className="mt-8 bg-zinc-900 inline-flex items-center justify-center rounded-md px-6 py-2 text-base font-medium text-white transition duration-300 ease-in-out border border-zinc-100/10 hover:border-zinc-100/30">
             Get started
-          </button>
-          <button className=" md:text-md mt-8 inline-flex items-center justify-center rounded-md border border-white bg-zinc-50 px-5 py-3 text-base font-medium text-zinc-600 transition-all hover:bg-black hover:text-white  md:py-2 md:px-4">
-            Live demo
-          </button>
+          </Link>
+          <Link href="https://dev.orcues.com" className="mt-8 inline-flex items-center justify-center rounded-md border border-white bg-zinc-50 px-5 py-2 text-base font-medium text-zinc-900 transition-all hover:bg-zinc-900 hover:text-white">
+            Live demo <ArrowRight className="ml-2 h-5 w-5" />
+          </Link>
         </div>
         <div className="mt-8">
           <div className="flex h-[700px] items-center justify-center rounded-xl bg-transparent p-4 shadow-lg">
@@ -45,7 +50,7 @@ export default function Home() {
             />
           </div>
         </div>
-        <div className="mt-28 flex flex-col gap-6">
+        {/* <div className="mt-28 flex flex-col gap-6">
           <h2 className="mx-auto font-display  text-5xl font-extrabold text-zinc-50">
             How it works
           </h2>
@@ -102,7 +107,7 @@ export default function Home() {
               </div>
             </div>
           </div>
-        </div>
+        </div> */}
       </div>
     </section>
   );
