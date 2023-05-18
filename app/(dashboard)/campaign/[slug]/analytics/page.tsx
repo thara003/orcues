@@ -69,8 +69,6 @@ const ProjectAnalytics = () => {
               categories={[
                 "Campaign 1",
                 "Campaign 2",
-                "Campaign 3",
-                "Campaign 4",
               ]}
               colors={["blue", "teal"]}
               valueFormatter={dataFormatter}
@@ -87,8 +85,6 @@ const ProjectAnalytics = () => {
               categories={[
                 "Campaign 1",
                 "Campaign 2",
-                "Campaign 3",
-                "Campaign 4",
               ]}
               colors={["blue", "teal"]}
               valueFormatter={dataFormatter}
