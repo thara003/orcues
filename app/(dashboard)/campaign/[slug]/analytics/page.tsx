@@ -29,19 +29,25 @@ const ProjectAnalytics = () => {
       const month = subscribedAt.toLocaleString('default', { month: 'short' });
   
       if (monthCounts[month]) {
-        monthCounts[month]++;
+        if (user.subscribed) {
+          monthCounts[month].subscribed++;
+        } else {
+          monthCounts[month].unsubscribed++;
+        }
       } else {
-        monthCounts[month] = 1;
+        monthCounts[month] = {
+          month,
+          subscribed: user.subscribed ? 1 : 0,
+          unsubscribed: user.subscribed ? 0 : 1
+        };
       }
     });
   
-    const result = Object.entries(monthCounts).map(([month, count]) => ({
-      month,
-      "No of subscribers": count
-    }));
+    const result = Object.values(monthCounts);
   
     return result;
   }
+  
 
   const getCampaigns = async () => {
     let { data: campaigns, error } = await supabase
@@ -70,8 +76,8 @@ const ProjectAnalytics = () => {
             className="mt-4 h-72"
             data={users}
             index="month"
-            categories={[  "No of subscribers",]}
-            colors={["rose"]}
+            categories={[  "subscribed", "unsubscribed"]}
+            colors={["blue","teal"]}
             valueFormatter={dataFormatter}
           />
         </Card>
@@ -81,10 +87,8 @@ const ProjectAnalytics = () => {
               className="mt-6"
               data={users}
               index="year"
-              categories={[
-                "No of subscribers",
-              ]}
-              colors={["teal"]}
+              categories={[  "subscribed", "unsubscribed"]}
+              colors={["blue","teal"]}
               valueFormatter={dataFormatter}
               yAxisWidth={40}
             />
@@ -96,10 +100,8 @@ const ProjectAnalytics = () => {
               className="mt-6"
               data={users}
               index="month"
-              categories={[
-                "No of subscribers",
-              ]}
-              colors={["cyan"]}
+              categories={[  "subscribed", "unsubscribed"]}
+              colors={["blue","teal"]}
               valueFormatter={dataFormatter}
               yAxisWidth={48}
               showXAxis={true}
