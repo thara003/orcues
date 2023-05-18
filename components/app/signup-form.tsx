@@ -39,7 +39,6 @@ export default function SignupForm() {
   return (
     <div className="grid gap-5">
       <div className="grid gap-1">
-      <Toaster position="bottom-right" />
         <label htmlFor="email" className="text-sm font-medium text-gray-700">
           Name
         </label>
@@ -50,12 +49,14 @@ export default function SignupForm() {
           onChange={(e) => {
             setName(e.target.value);
           }}
-          className="placeholder:text-gray-400shadow-sm block w-full rounded-md border border-gray-300 px-3 py-2 focus:border-2 focus:border-violet-500 focus:outline-none focus:ring-violet-500 sm:text-sm"
-          placeholder="Enter your email"
+          className="block w-full rounded-md border border-gray-300 px-3 py-2 placeholder-gray-400 shadow-sm ring-transparent focus:border-2 focus:border-zinc-500 focus:outline-none focus:ring-zinc-800 sm:text-sm"
+          placeholder="Enter your name"
           required
         />
-        <label htmlFor="email" className="text-sm font-medium text-gray-700">
-          Email
+      </div>
+      <div className="grid gap-1">
+        <label htmlFor="email" className="text-sm font-medium text-zinc-700">
+        Email address
         </label>
         <input
           type="email"
@@ -64,7 +65,7 @@ export default function SignupForm() {
           onChange={(e) => {
             setEmail(e.target.value);
           }}
-          className="placeholder:text-gray-400shadow-sm block w-full rounded-md border border-gray-300 px-3 py-2 focus:border-2 focus:border-violet-500 focus:outline-none focus:ring-violet-500 sm:text-sm"
+          className="block w-full rounded-md border border-zinc-300 px-3 py-2 placeholder-zinc-400 shadow-sm ring-transparent focus:border-2 focus:border-zinc-500 focus:outline-none focus:ring-zinc-800 sm:text-sm"
           placeholder="Enter your email"
           required
         />
@@ -80,7 +81,7 @@ export default function SignupForm() {
           onChange={(e) => {
             setPassword(e.target.value);
           }}
-          className="block w-full rounded-md border border-gray-300 px-3 py-2 placeholder-gray-400 shadow-sm focus:border-2 focus:border-violet-500 focus:outline-none focus:ring-violet-500 sm:text-sm"
+          className="block w-full rounded-md border border-zinc-300 px-3 py-2 placeholder-zinc-400 shadow-sm ring-transparent focus:border-2 focus:border-zinc-500 focus:outline-none focus:ring-zinc-800 sm:text-sm"
           placeholder="Enter your password"
           required
         />
@@ -105,7 +106,7 @@ export default function SignupForm() {
         <button
           type="submit"
           onClick={handleSignUp}
-          className="flex w-full flex-row items-center justify-center rounded-md bg-gradient-to-r from-violet-600 to-indigo-600 px-4 py-2 text-center text-base font-medium text-white shadow-md transition delay-150 duration-300 ease-in-out hover:-translate-y-1 hover:scale-100"
+          className="flex w-full flex-row items-center justify-center rounded-md bg-black px-4 py-2 text-center text-base font-medium text-zinc-50 shadow-md transition delay-150 duration-300 ease-in-out hover:bg-black/75"
         >
           {loading && (
             <Loader2 className="mr-2 flex h-4 w-4 animate-spin items-center justify-center" />
