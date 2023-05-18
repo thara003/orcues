@@ -18,36 +18,26 @@ const ProjectAnalytics = () => {
       month: "Jan",
       "Campaign 1": 90,
       "Campaign 2": 338,
-      "Campaign 3": 538,
-      "Campaign 4": 396,
     },
     {
       month: "Feb",
       "Campaign 1": 289,
       "Campaign 2": 233,
-      "Campaign 3": 253,
-      "Campaign 4": 333,
     },
     {
       month: "Mar",
       "Campaign 1": 510,
       "Campaign 2": 856,
-      "Campaign 3": 423,
-      "Campaign 4": 383,
     },
     {
       month: "Apr",
       "Campaign 1": 242,
       "Campaign 2": 661,
-      "Campaign 3": 537,
-      "Campaign 4": 382,
     },
     {
       month: "May",
       "Campaign 1": 245,
       "Campaign 2": 124,
-      "Campaign 3": 23,
-      "Campaign 4": 489,
     },
   ];
 
@@ -65,13 +55,8 @@ const ProjectAnalytics = () => {
             className="mt-4 h-72"
             data={chartdata}
             index="month"
-            categories={[
-              "Campaign 1",
-              "Campaign 2",
-              "Campaign 3",
-              "Campaign 4",
-            ]}
-            colors={["blue", "teal", "amber", "rose"]}
+            categories={["Campaign 1", "Campaign 2"]}
+            colors={["blue", "teal"]}
             valueFormatter={dataFormatter}
           />
         </Card>
@@ -87,7 +72,7 @@ const ProjectAnalytics = () => {
                 "Campaign 3",
                 "Campaign 4",
               ]}
-                            colors={["blue", "teal", "amber", "rose"]}
+              colors={["blue", "teal"]}
               valueFormatter={dataFormatter}
               yAxisWidth={40}
             />
@@ -105,7 +90,7 @@ const ProjectAnalytics = () => {
                 "Campaign 3",
                 "Campaign 4",
               ]}
-              colors={["blue", "teal", "amber", "rose"]}
+              colors={["blue", "teal"]}
               valueFormatter={dataFormatter}
               yAxisWidth={48}
               showXAxis={true}

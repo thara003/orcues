@@ -4,6 +4,7 @@ import React from "react";
 import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { useSupabase } from "@/app/supabase-provider";
+import { Toaster, toast } from "sonner";
 import {
   Title,
   Text,
@@ -36,7 +37,9 @@ const SettingsPage = () => {
       .from("campaigns")
       .select("*")
       .eq("id", params.slug);
-    if (error) console.log("error", error);
+    if (error){
+      toast.error("Error fetching campaign")
+    }
     console.log(campaigns);
     setCampaignName(campaigns[0].name);
     setNewCampaignName(campaigns[0].name);

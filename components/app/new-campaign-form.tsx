@@ -4,6 +4,7 @@ import React from "react";
 import { useSupabase } from "@/app/supabase-provider";
 import { useState, useEffect } from "react";
 import { Subtitle, TextInput, Button } from "@tremor/react";
+import { Toaster, toast } from "sonner";
 
 export default function CampaignForm({ workspace, onClose }) {
   const { supabase } = useSupabase();
@@ -22,12 +23,16 @@ export default function CampaignForm({ workspace, onClose }) {
       },
     ]);
     setLoading(false);
-    const visible = false;
-    onClose(visible);
+    clearForm();
 
     if (error) {
       console.log("error", error);
+      toast.error("Error creating campaign");
     }
+    else{
+      toast.success("Campaign created successfully");
+    }
+
   };
     const clearForm = () => {
     setCampaignName("");
@@ -40,9 +45,9 @@ export default function CampaignForm({ workspace, onClose }) {
     <div>
       <div className="flex flex-col gap-4 mt-4">
         <div className="flex flex-col gap-2">
-          <Subtitle className="text-black">Title</Subtitle>
+          <Subtitle className="text-black">Name</Subtitle>
           <TextInput
-            placeholder="Campaign name"
+            placeholder="Project waitlist"
             type="text"
             value={campaign_name}
             onChange={(e) => setCampaignName(e.target.value)}
@@ -51,7 +56,7 @@ export default function CampaignForm({ workspace, onClose }) {
         <div className="flex flex-col gap-2">
           <Subtitle className=" text-black">Description</Subtitle>
           <TextInput
-            placeholder="Campaign description"
+            placeholder="A campaign for the ages"
             type="text"
             value={description}
             onChange={(e) => setDescription(e.target.value)}
@@ -73,7 +78,7 @@ export default function CampaignForm({ workspace, onClose }) {
             className="w-24 rounded-md border-indigo-400 px-4 py-2 text-center text-indigo-400 hover:bg-indigo-100 focus:outline-none"
             onClick={addCampaign}
           >
-            Save
+            Create
           </Button>
         </div>
       </div>

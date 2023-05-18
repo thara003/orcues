@@ -67,7 +67,12 @@ export default function UserForm() {
       .eq("id", user.id);
 
     setIsEdit(false);
-    toast.success("Your profile has been updated");
+    if (error) {
+      toast.error("Could not update profile");
+    }
+    else{
+      toast.success("Your profile has been updated");
+    }
   };
 
   const updatePassword = async () => {
@@ -105,7 +110,6 @@ export default function UserForm() {
 
   return (
     <div className="flex h-full items-center">
-      <Toaster position="bottom-right" />
       {loading && (
         <Lottie animationData={dogAnimation} loop={true} style={style} />
       )}
