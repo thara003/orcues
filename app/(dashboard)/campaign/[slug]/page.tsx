@@ -1,32 +1,52 @@
-import { Title, Text, Card } from "@tremor/react";
+"use client";
+
+import { Title, Text } from "@tremor/react";
 import Search from "@/components/app/search";
 import UsersTable from "@/components/app/table";
+import { Radio, PauseCircle } from "lucide-react";
+import { useSupabase } from "@/app/supabase-provider";
+import { useState, useEffect } from "react";
+import { useParams } from "next/navigation";
 
-interface PostPageProps {
-  params: {
-    slug: string;
+
+export default function PostPage() {
+  const params = useParams();
+  const { supabase } = useSupabase();
+  const [campaign_name, setCampaignName] = useState("");
+
+  const getCampaigns = async () => {
+    let { data: campaigns, error } = await supabase
+      .from("campaigns")
+      .select("*")
+      .eq("id", params.slug);
+    if (error) console.log("error", error);
+    setCampaignName(campaigns[0].name);
   };
-}
 
-async function getPostFromParams(params) {
-  const slug = params?.slug;
-  return slug;
-}
-
-export default async function PostPage({ params }: PostPageProps) {
-  const post = await getPostFromParams(params);
+  useEffect(() => {
+    getCampaigns();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   return (
     <main className="mx-auto max-w-7xl p-4 md:p-10">
-      <Title>Users</Title>
+      <div className="flex flex-row justify-between">
+        <div className="flex flex-col gap-3">
+      <Title>{campaign_name}</Title>
       <Text>
         A list of users retrieved from a MySQL database (PlanetScale).
       </Text>
-      <UsersTable />
-      <div className="mt-10 flex flex-col items-center justify-center py-2">
-        <h1 className="text-xl font-bold text-black">Project Page</h1>
-        <p>{post}</p>
       </div>
+      <div className="rounded-3xl bg-green-100 p-2 px-4 h-fit flex flex-row items-center gap-1">
+      <Radio className="h-4 w-4 text-green-500" />
+        <Text className="text-green-500">Live</Text>
+      </div>
+      {/* <div className="rounded-3xl bg-red-100 p-2 px-4 h-fit flex flex-row items-center gap-1">
+      <PauseCircle className="h-4 w-4 text-red-500" />
+        <Text className="text-red-500">Paused</Text>
+      </div> */}
+      </div>
+      <UsersTable />
     </main>
   );
 }
