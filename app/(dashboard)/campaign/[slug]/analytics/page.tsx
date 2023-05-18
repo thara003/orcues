@@ -11,38 +11,53 @@ import {
   LineChart,
   Col,
 } from "@tremor/react";
+import { useSupabase } from "@/app/supabase-provider";
+import { useState, useEffect } from "react";
+import { useParams } from "next/navigation";
+
 
 const ProjectAnalytics = () => {
-  const chartdata = [
-    {
-      month: "Jan",
-      "Campaign 1": 90,
-      "Campaign 2": 338,
-    },
-    {
-      month: "Feb",
-      "Campaign 1": 289,
-      "Campaign 2": 233,
-    },
-    {
-      month: "Mar",
-      "Campaign 1": 510,
-      "Campaign 2": 856,
-    },
-    {
-      month: "Apr",
-      "Campaign 1": 242,
-      "Campaign 2": 661,
-    },
-    {
-      month: "May",
-      "Campaign 1": 245,
-      "Campaign 2": 124,
-    },
-  ];
+  const [users, setUsers] = useState<any[]>([]);
+  const { supabase } = useSupabase();
+  const params = useParams();
+
+  function countSubscribersByMonth(users) {
+    const monthCounts = {};
+  
+    users.forEach(user => {
+      const subscribedAt = new Date(user.subscribed_at);
+      const month = subscribedAt.toLocaleString('default', { month: 'short' });
+  
+      if (monthCounts[month]) {
+        monthCounts[month]++;
+      } else {
+        monthCounts[month] = 1;
+      }
+    });
+  
+    const result = Object.entries(monthCounts).map(([month, count]) => ({
+      month,
+      "No of subscribers": count
+    }));
+  
+    return result;
+  }
+
+  const getCampaigns = async () => {
+    let { data: campaigns, error } = await supabase
+      .from("campaigns")
+      .select("*")
+      .eq("id", params.slug);
+    setUsers(countSubscribersByMonth(campaigns[0]?.users));
+  };
+
+  useEffect(() => {
+    getCampaigns();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   const dataFormatter = (number) => {
-    const group = Math.floor(number / 100) * 100;
+    const group = Math.floor(number / 1) * 1;
     return `${group}`;
   };
   return (
@@ -53,10 +68,10 @@ const ProjectAnalytics = () => {
         <Card>
           <AreaChart
             className="mt-4 h-72"
-            data={chartdata}
+            data={users}
             index="month"
-            categories={["Campaign 1", "Campaign 2"]}
-            colors={["blue", "teal"]}
+            categories={[  "No of subscribers",]}
+            colors={["rose"]}
             valueFormatter={dataFormatter}
           />
         </Card>
@@ -64,13 +79,12 @@ const ProjectAnalytics = () => {
           <Card>
             <LineChart
               className="mt-6"
-              data={chartdata}
+              data={users}
               index="year"
               categories={[
-                "Campaign 1",
-                "Campaign 2",
+                "No of subscribers",
               ]}
-              colors={["blue", "teal"]}
+              colors={["teal"]}
               valueFormatter={dataFormatter}
               yAxisWidth={40}
             />
@@ -80,13 +94,12 @@ const ProjectAnalytics = () => {
           <Card>
             <BarChart
               className="mt-6"
-              data={chartdata}
+              data={users}
               index="month"
               categories={[
-                "Campaign 1",
-                "Campaign 2",
+                "No of subscribers",
               ]}
-              colors={["blue", "teal"]}
+              colors={["cyan"]}
               valueFormatter={dataFormatter}
               yAxisWidth={48}
               showXAxis={true}
