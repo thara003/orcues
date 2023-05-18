@@ -20,17 +20,16 @@ export default function Home() {
           <h1 className=" sm:text-1xl mx-auto mt-5 max-w-2xl bg-gradient-to-t from-zinc-100/50 to-white bg-clip-text text-center font-display text-4xl font-extrabold leading-[1.15] text-transparent sm:text-5xl sm:leading-[1.15] md:text-5xl lg:text-6xl">
             Supercharge your email compaigns & newsletters
           </h1>
-          <p className="m-auto mt-8 max-w-2xl text-xl text-zinc-600 ">
-            Open-source newsletter management for scalable, private, and
-            cost-effective marketing solutions without compromising data privacy
-            or transparency.
+          <p className="m-auto mt-8 max-w-3xl text-center text-xl  text-zinc-600">
+            An Open-source newsletter management for scalable and cost-effective
+            marketing. Ensures data privacy and transparency.
           </p>
         </div>
-        <div className="flex justify-center gap-2">
-          <button className="md:text-md mt-8 inline-flex items-center justify-center rounded-md border border-transparent bg-zinc-900 px-5 py-3 text-base font-medium text-white transition-all hover:bg-zinc-700 md:py-2 md:px-4">
+        <div className="flex justify-center gap-4  ">
+          <button className="md:text-md mt-8 inline-flex items-center justify-center rounded-md border border-white px-5 py-3  text-base font-medium text-white transition duration-300 ease-in-out hover:bg-white hover:text-black  md:py-2 md:px-4">
             Get started
           </button>
-          <button className=" md:text-md mt-8 inline-flex items-center justify-center rounded-md border border-transparent bg-zinc-50 px-5 py-3 text-base font-medium text-zinc-600 transition-all hover:bg-slate-700 hover:text-white  md:py-2 md:px-4">
+          <button className=" md:text-md mt-8 inline-flex items-center justify-center rounded-md border border-white bg-zinc-50 px-5 py-3 text-base font-medium text-zinc-600 transition-all hover:bg-black hover:text-white  md:py-2 md:px-4">
             Live demo
           </button>
         </div>
@@ -50,8 +49,8 @@ export default function Home() {
           <h2 className="mx-auto font-display  text-5xl font-extrabold text-zinc-50">
             How it works
           </h2>
-          <div className=" grid grid-cols-1 place-content-center gap-6 md:grid-cols-2 lg:grid-cols-3 ">
-            <div className=" divide-y divide-zinc-600 rounded-lg bg-zinc-900 opacity-[0.8] shadow-sm  hover:border hover:border-fuchsia-900 hover:opacity-100 hover:transition-all">
+          <div className=" grid grid-cols-1 place-content-center gap-6 py-7  md:grid-cols-2 lg:grid-cols-3 ">
+            <div className="rounded-lg border border-black   bg-zinc-900 opacity-[0.8] shadow-sm hover:border-fuchsia-900 hover:opacity-100 hover:transition-all">
               <div className="p-6">
                 <h2 className="text-2xl font-semibold leading-6 text-white">
                   Signup
@@ -68,7 +67,7 @@ export default function Home() {
                 </button>
               </div>
             </div>
-            <div className=" divide-y divide-zinc-600 rounded-lg bg-zinc-900 opacity-[0.8] shadow-sm transition-all hover:border hover:border-fuchsia-900 hover:opacity-100">
+            <div className="rounded-lg border border-black bg-zinc-900 opacity-[0.8] shadow-sm transition-all hover:border hover:border-fuchsia-900 hover:opacity-100">
               <div className="p-6">
                 <h2 className="text-2xl font-semibold leading-6 text-white">
                   Connect{" "}
@@ -85,7 +84,7 @@ export default function Home() {
                 </button>
               </div>
             </div>
-            <div className=" divide-y divide-zinc-600 rounded-lg bg-zinc-900 opacity-[0.8] shadow-sm transition-all hover:border hover:border-fuchsia-900 hover:opacity-100">
+            <div className=" rounded-lg border border-black bg-zinc-900 opacity-[0.8] shadow-sm transition-all hover:border hover:border-fuchsia-900 hover:opacity-100">
               <div className="p-6">
                 <h2 className="text-2xl font-semibold leading-6 text-white">
                   Analyse
