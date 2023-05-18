@@ -240,17 +240,34 @@ export default function UserForm() {
               <div>
                 <Title>Mail server config</Title>
                 <div className="my-4 flex flex-row items-center">
-                  <SelectBox
-                    onValueChange={(value) =>
-                      console.log("the new value is", value)
-                    }
-                    defaultValue="1"
-                  >
-                    <SelectBoxItem value="1" text="Kilometers" />
-                    <SelectBoxItem value="2" text="Meters" />
-                    <SelectBoxItem value="3" text="Miles" />
-                    <SelectBoxItem value="4" text="Nautical Miles" />
-                  </SelectBox>
+                  <Subtitle className="w-1/3">Host</Subtitle>
+                  <TextInput
+                    placeholder="smtp.example.com"
+                    type="text"
+                    value="smtp.example.com"
+                  />
+                </div>
+                <div className="my-6 flex flex-row items-center">
+                  <Subtitle className="w-1/3">Port</Subtitle>
+                  <TextInput
+                    type="text"
+                    value="587"
+                  />
+                </div>
+                <div className="mb-4 flex flex-row items-center">
+                  <Subtitle className="w-1/3">User name</Subtitle>
+                  <TextInput
+                    placeholder='dummy@example.com'
+                    type="text"
+                    value='dummy@example.com'
+                  />
+                </div>
+                <div className="my-6 flex flex-row items-center">
+                  <Subtitle className="w-1/3">Password</Subtitle>
+                  <TextInput
+                    type="password"
+                    value='dummy_password'
+                  />
                 </div>
               </div>
             )}

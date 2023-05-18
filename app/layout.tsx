@@ -4,7 +4,7 @@ import { Inter } from "next/font/google";
 import clsx from "clsx";
 import LocalFont from "next/font/local";
 import SupabaseProvider from "./supabase-provider";
-import { Toaster } from "sonner";
+import ToastWrapper from "@/components/app/toaster-wrapper";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -50,8 +50,8 @@ export default function RootLayout({
       <body className="flex flex-col scroll-smooth antialiased">
         <SupabaseProvider>
           {children}
-          <Toaster position="bottom-right" />
-          </SupabaseProvider>
+          <ToastWrapper />
+        </SupabaseProvider>
       </body>
     </html>
   );

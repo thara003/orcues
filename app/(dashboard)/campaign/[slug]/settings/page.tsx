@@ -16,7 +16,7 @@ import {
   Toggle,
   ToggleItem,
   Button,
-  Callout
+  Callout,
 } from "@tremor/react";
 import { useParams } from "next/navigation";
 
@@ -37,8 +37,8 @@ const SettingsPage = () => {
       .from("campaigns")
       .select("*")
       .eq("id", params.slug);
-    if (error){
-      toast.error("Error fetching campaign")
+    if (error) {
+      toast.error("Error fetching campaign");
     }
     console.log(campaigns);
     setCampaignName(campaigns[0].name);
@@ -63,18 +63,22 @@ const SettingsPage = () => {
   };
 
   const clearForm = () => {
-    setNewCampaignName(campaign_name)
-    setNewCampaignDescription(campaign_description)
+    setNewCampaignName(campaign_name);
+    setNewCampaignDescription(campaign_description);
     setIsEdit(false);
-  }
+  };
   const deleteCampaign = async () => {
     const { data, error } = await supabase
-    .from('campaigns')
-    .delete()
-    .eq("id", params.slug);
-    if (error) console.log("error", error);
-    router.push("/dashboard");
-  }
+      .from("campaigns")
+      .delete()
+      .eq("id", params.slug);
+    if (error) {
+      toast.error("Error deleting campaign");
+    } else {
+      toast.success("Campaign deleted successfully");
+      router.push("/dashboard");
+    }
+  };
 
   useEffect(() => {
     getCampaigns();
@@ -94,8 +98,8 @@ const SettingsPage = () => {
               value={new_campaign_name}
               className="w-2/3"
               onChange={(e) => {
-                setNewCampaignName(e.target.value)
-                setIsEdit(true)
+                setNewCampaignName(e.target.value);
+                setIsEdit(true);
               }}
             />
           </div>
@@ -107,25 +111,10 @@ const SettingsPage = () => {
               value={new_campaign_description}
               className="w-2/3"
               onChange={(e) => {
-                setNewCampaignDescription(e.target.value)
+                setNewCampaignDescription(e.target.value);
                 setIsEdit(true);
               }}
             />
-          </div>
-          <div className="flex flex-row justify-between">
-            <Subtitle className="w-1/3 text-black">
-              Configure mail server
-            </Subtitle>
-            <SelectBox
-              onValueChange={(value) => console.log("the new value is", value)}
-              defaultValue="1"
-              className="w-2/3"
-            >
-              <SelectBoxItem value="1" text="Kilometers" />
-              <SelectBoxItem value="2" text="Meters" />
-              <SelectBoxItem value="3" text="Miles" />
-              <SelectBoxItem value="4" text="Nautical Miles" />
-            </SelectBox>
           </div>
           <div className="flex flex-row">
             <Subtitle className="w-1/3 text-black">Campaign status</Subtitle>
@@ -145,49 +134,77 @@ const SettingsPage = () => {
               />
             </Toggle>
           </div>
-        <div className="flex flex-row items-center mt-4 justify-end gap-2">
-          <Button
-            size="xs"
-            variant="secondary"
-            disabled={!isEdit}
-            className="w-24 rounded-md border-red-400 px-4 py-2 text-center text-red-400 hover:bg-red-100 focus:outline-none"
-            onClick={clearForm}
-          >
-            Cancel
-          </Button>
-          <Button
-            size="xs"
-            variant="secondary"
-            loading={loading}
-            disabled={!isEdit}
-            className="w-24 rounded-md border-indigo-400 px-4 py-2 text-center text-indigo-400 hover:bg-indigo-100 focus:outline-none"
-            onClick={updateCampaign}
-          >
-            Save
-          </Button>
+          <div className="mt-4 flex flex-row items-center justify-end gap-2">
+            <Button
+              size="xs"
+              variant="secondary"
+              disabled={!isEdit}
+              className="w-24 rounded-md border-red-400 px-4 py-2 text-center text-red-400 hover:bg-red-100 focus:outline-none"
+              onClick={clearForm}
+            >
+              Cancel
+            </Button>
+            <Button
+              size="xs"
+              variant="secondary"
+              loading={loading}
+              disabled={!isEdit}
+              className="w-24 rounded-md border-indigo-400 px-4 py-2 text-center text-indigo-400 hover:bg-indigo-100 focus:outline-none"
+              onClick={updateCampaign}
+            >
+              Save
+            </Button>
+          </div>
         </div>
+      </Card>
+      <Title className="mt-4 text-black">Configure mail server</Title>
+      <Card className="mt-4 w-3/4">
+        <div className="flex flex-col justify-between">
+
+          <div className="my-4 flex flex-row items-center">
+            <Subtitle className="w-1/3">Host</Subtitle>
+            <TextInput
+              placeholder="smtp.example.com"
+              type="text"
+              value="smtp.example.com"
+            />
+          </div>
+          <div className="my-6 flex flex-row items-center">
+            <Subtitle className="w-1/3">Port</Subtitle>
+            <TextInput type="text" value="587" />
+          </div>
+          <div className="mb-4 flex flex-row items-center">
+            <Subtitle className="w-1/3">User name</Subtitle>
+            <TextInput
+              placeholder="dummy@example.com"
+              type="text"
+              value="dummy@example.com"
+            />
+          </div>
+          <div className="my-6 flex flex-row items-center">
+            <Subtitle className="w-1/3">Password</Subtitle>
+            <TextInput type="password" value="dummy_password" />
+          </div>
         </div>
       </Card>
       <Title className="mt-4">Delete Campaign</Title>
       <Card className="mt-4 w-3/4">
-      <div className="flex flex-row">
-        <Callout
-        className="w-full"
-        title="Delete this Campaign"
-        color="rose"
-      >
-       <Text className="text-red-500 mb-3">Deleting this campaign will also remove all the subscribers data.</Text> 
-       <Button
-            size="xs"
-            variant="secondary"
-            className="w-fit rounded-md border-red-400 px-4 py-2 text-center text-red-400 hover:bg-red-100 focus:outline-none"
-            onClick={deleteCampaign}
-          >
-            Delete Campaign
-          </Button>
-      </Callout>
-          </div>
-        </Card>
+        <div className="flex flex-row">
+          <Callout className="w-full" title="Delete this Campaign" color="rose">
+            <Text className="mb-3 text-red-500">
+              Deleting this campaign will also remove all the subscribers data.
+            </Text>
+            <Button
+              size="xs"
+              variant="secondary"
+              className="w-fit rounded-md border-red-400 px-4 py-2 text-center text-red-400 hover:bg-red-100 focus:outline-none"
+              onClick={deleteCampaign}
+            >
+              Delete Campaign
+            </Button>
+          </Callout>
+        </div>
+      </Card>
     </main>
   );
 };

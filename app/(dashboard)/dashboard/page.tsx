@@ -8,6 +8,7 @@ import { Fragment, useState, useEffect } from "react";
 import { Dialog, Transition } from "@headlessui/react";
 import CampaignForm from "@/components/app/new-campaign-form";
 import Image from "next/image";
+import { toast } from "sonner";
 
 export const dynamic = "force-dynamic";
 
@@ -109,7 +110,7 @@ export default function Dashboard() {
             Add a campaign
           </button>
           <Subtitle className="mt-6">
-            Let&apos;s make some magic happen{" "}
+            Let&apos;s make some magic happen
           </Subtitle>
         </Card>
       ) : 
