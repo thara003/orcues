@@ -8,17 +8,15 @@ export const metadata: Metadata = {
 
 export default function Register() {
   return (
-    <div className="xxl:justify-start flex w-full flex-col justify-center space-y-6 md:w-2/3">
+    <div className="xxl:justify-start flex w-full flex-col justify-center space-y-8 md:w-2/3">
       <div className="flex flex-col space-y-2 text-start">
-        <h1 className="text-4xl font-semibold tracking-tight">
-          Welcome to the club
-        </h1>
+        <h1 className="text-4xl font-semibold tracking-tight">Create an account</h1>
       </div>
       <SignupForm />
-      <p className="px-8 text-center text-sm text-slate-500 dark:text-slate-400">
+      <p className="px-8 text-center text-sm text-zinc-500">
         <Link
           href="/login"
-          className="underline-offset-4 hover:text-violet-500 hover:underline"
+          className="underline-offset-4 hover:text-zinc-700 hover:underline"
         >
           Already have an account? Sign In
         </Link>

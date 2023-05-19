@@ -8,9 +8,9 @@ const Navbar = () => {
   // const isLoggedIn = user !== null;
   return (
     <nav className="sticky top-0 z-40 bg-black transition-all duration-150">
-      <a href="#skip" className="sr-only focus:not-sr-only">
+      {/* <a href="#skip" className="sr-only focus:not-sr-only">
         Skip to content
-      </a>
+      </a> */}
       <div className="mx-auto max-w-6xl px-6">
         <div className="align-center relative flex flex-row justify-between py-4 md:py-6">
           <div className="flex flex-1 items-center">
@@ -59,24 +59,24 @@ const Navbar = () => {
             </Link>
           </div>
 
-          <div className="flex flex-1 justify-end space-x-8">
+          <div className="flex flex-1 justify-end space-x-4">
             <Link
               href="https://github.com/thara003/orcues"
-              className="inline-flex cursor-pointer items-center rounded-md p-1 font-medium leading-6 text-zinc-200 transition duration-75 ease-in-out"
+              className=" inline-flex cursor-pointer items-center px-4 font-medium leading-6 text-zinc-200 transition duration-75 ease-in-out"
             >
               GitHub
             </Link>
             {user ? (
               <Link
                 href="/dashboard"
-                className="inline-flex cursor-pointer items-center rounded-md p-1 font-medium leading-6 text-zinc-200 transition duration-75 ease-in-out"
+                className="inline-flex cursor-pointer items-center p-1 font-medium leading-6 text-zinc-200 transition duration-75 ease-in-out"
               >
                 Dashboard
               </Link>
             ) : (
               <Link
                 href="/login"
-                className="inline-flex cursor-pointer items-center rounded-md p-1 font-medium leading-6 text-zinc-200 transition duration-75 ease-in-out"
+                className="inline-flex cursor-pointer items-center rounded-md border border-zinc-900 bg-zinc-50 px-5 py-2 font-medium  text-black transition duration-75 ease-in-out hover:border-zinc-50 hover:bg-zinc-900 hover:text-zinc-50"
               >
                 Sign in
               </Link>
