@@ -166,6 +166,8 @@ export default function AnalyticsPage() {
             categories={campaignnames}
             colors={["blue", "teal"]}
             valueFormatter={dataFormatter}
+            yAxisWidth={48}
+            showXAxis={true}
           />
         </Card>
         <Col>
@@ -190,8 +192,6 @@ export default function AnalyticsPage() {
               categories={campaignnames}
               colors={["blue", "teal"]}
               valueFormatter={dataFormatter}
-              yAxisWidth={48}
-              showXAxis={true}
             />
           </Card>
         </Col>

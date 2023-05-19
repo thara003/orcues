@@ -1,11 +1,24 @@
+"use client"
+
+import { useState } from "react";
 import { X as XMarkIcon } from "lucide-react";
 
 export default function InfoHeader() {
+  const [isHidden, setIsHidden] = useState(false);
+
+  const handleDismiss = () => {
+    setIsHidden(true);
+  };
+
+  if (isHidden) {
+    return null; // Render nothing if hidden
+  }
+
   return (
     <div className="relative isolate flex items-center gap-x-6 overflow-hidden bg-black px-6 py-2.5 sm:px-3.5 sm:before:flex-1">
       <div className="flex flex-wrap items-center gap-x-4 gap-y-2">
         <p className="text-sm leading-6 text-zinc-50">
-          <strong className="font-semibold">Live Demo</strong>
+        <strong className="font-semibold">Live Demo</strong>
           <svg
             viewBox="0 0 2 2"
             className="mx-2 inline h-0.5 w-0.5 fill-current"
@@ -26,6 +39,7 @@ export default function InfoHeader() {
         <button
           type="button"
           className="-m-3 p-3 focus-visible:outline-offset-[-4px]"
+          onClick={handleDismiss}
         >
           <span className="sr-only">Dismiss</span>
           <XMarkIcon className="h-5 w-5 text-zinc-50" aria-hidden="true" />
